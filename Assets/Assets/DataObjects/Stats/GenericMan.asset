@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a349586b99fd4a7aa5b5430b7afd1b3, type: 3}
-  m_Name: PistolManPerk
+  m_Name: GenericMan
   m_EditorClassIdentifier: 
-  MovementSpeed: 1.38
+  MovementSpeed: 5
   weapon: {fileID: 11400000, guid: 2eb1ad930160a403d899feb444b849f9, type: 2}
   Sprite: {fileID: 21300000, guid: 991b27e37ce314612b4f693fcdb763bb, type: 3}

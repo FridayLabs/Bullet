@@ -7,13 +7,13 @@ public class PlayerMovementController : MonoBehaviour {
     public Perk Perk;
 
     private Rigidbody2D _rigidbody2D;
-    private const int movementModificator = 50;
+    private const int movementModificator = 20;
 
     void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         Vector2 movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _rigidbody2D.velocity = movementVector.normalized * Perk.MovementSpeed * movementModificator * Time.deltaTime;
 
