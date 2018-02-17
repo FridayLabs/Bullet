@@ -14,6 +14,6 @@ MonoBehaviour:
   Image: {fileID: 0}
   BulletStartVelosity: 4
   BulletRange: 7
-  AimArcLength: 30
-  AimSpeed: 0.6
+  AimArcLength: 4
+  AimSpeed: 0.25
   MovementModifier: 2
