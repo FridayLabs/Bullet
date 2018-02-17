@@ -368,7 +368,7 @@ Prefab:
     - target: {fileID: 114109049814098084, guid: 767dbe6af9bdf4303aa7826f7cabb000,
         type: 2}
       propertyPath: Stats.Array.data[0].value
-      value: 9.2
+      value: 12.6
       objectReference: {fileID: 0}
     - target: {fileID: 114109049814098084, guid: 767dbe6af9bdf4303aa7826f7cabb000,
         type: 2}
