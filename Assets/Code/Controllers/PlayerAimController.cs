@@ -5,61 +5,76 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerAimController : MonoBehaviour {
+    private Rigidbody2D _rigidBody;
     private WeaponHolder _weaponHolder;
-    private float _aimRadius;
-
     private int _aimMovingSide = -1;
+    private float _currentAimArcLength;
+    private Vector3 _initialAimTransform;
 
     // Use this for initialization
     void Start() {
+        _rigidBody = GetComponent<Rigidbody2D>();
         _weaponHolder = GetComponent<WeaponHolder>();
-        _aimRadius = transform.position.x;
+        _currentAimArcLength = _weaponHolder.weapon.AimArcLength;
+        _initialAimTransform = GetChild("Aim").localPosition;
+        Debug.Log(_initialAimTransform);
     }
 
     // Update is called once per frame
-    void Update() {
-//        TriggerAim(Input.GetButton("Fire2"));
-
+    void FixedUpdate() {
+        TriggerAim(Input.GetButton("Fire2"));
+        UpdateAimArcLength();
         UpdateAimPosition();
+        UpdateArcScale();
     }
 
     void TriggerAim(bool showAim) {
-        GetAim().gameObject.SetActive(showAim);
+        GetChild("AimContainer").gameObject.SetActive(showAim);
+    }
+
+    void UpdateAimArcLength() {
+        var newAimArcLength = _rigidBody.velocity == Vector2.zero
+            ? _weaponHolder.weapon.AimArcLength
+            : _weaponHolder.weapon.AimArcLength * _weaponHolder.weapon.MovementModifier;
+        if (newAimArcLength != _currentAimArcLength) {
+            _currentAimArcLength = newAimArcLength;
+            ResetAimPosition();
+        }
     }
 
     void UpdateAimPosition() {
-        var aim = GetAim();
-        var aimArc = GetAimArc();
+        var aim = GetChild("Aim");
+        var aimArc = GetChild("AimArc");
         Vector3 dir = aim.position - transform.position;
-        
+
         Vector2 forwardVec = transform.position - aimArc.position;
         Vector2 aimVec = transform.position - aim.position;
-        
+
         var angle = Vector2.Angle(forwardVec, aimVec);
 
-        if (_weaponHolder.weapon.AimArcLength - angle < 0) {
+        if (Mathf.DeltaAngle(angle, _currentAimArcLength) * 10 <= 0.01) {
             _aimMovingSide *= -1;
         }
-        
-        dir = Quaternion.Euler(_aimMovingSide * Vector3.forward * _weaponHolder.weapon.AimSpeed) * dir;            
-        
+
+        dir = Quaternion.Euler(_aimMovingSide * Vector3.forward * _weaponHolder.weapon.AimSpeed) * dir;
         aim.position = dir + transform.position;
     }
 
-    private Transform GetAim() {
-        foreach (Transform child in transform) {
-            if (child.gameObject.tag == "Aim") {
-                return child;
-            }
-        }
-        throw new Exception("Player has not Aim");
+    void UpdateArcScale() {
+        var aimArc = GetChild("AimArc");
+        aimArc.localScale = new Vector3(0.1f, Mathf.PI * 10f * _currentAimArcLength / 180, 0);
     }
-    private Transform GetAimArc() {
-        foreach (Transform child in transform) {
-            if (child.gameObject.tag == "AimArc") {
+
+    void ResetAimPosition() {
+        GetChild("Aim").localPosition = _initialAimTransform;
+    }
+    
+    private Transform GetChild(string name) {
+        foreach (Transform child in GetComponentsInChildren<Transform>(true)) {
+            if (child.gameObject.name == name) {
                 return child;
             }
         }
-        throw new Exception("Player has not AimArc");
+        throw new Exception("Player has not " + name);
     }
 }
