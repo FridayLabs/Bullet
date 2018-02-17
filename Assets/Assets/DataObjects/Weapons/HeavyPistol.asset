@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f41592128714bb6b581cc4a3e0cf828, type: 3}
-  m_Name: machineGun
+  m_Name: HeavyPistol
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 8
-  BulletRange: 12
-  AimArcLength: 13
-  AimSpeed: 0.65
-  MovementModifier: 3
+  BulletStartVelosity: 6
+  BulletRange: 10
+  AimArcLength: 5
+  AimSpeed: 0.32
+  MovementModifier: 1.75

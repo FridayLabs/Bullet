@@ -5,5 +5,6 @@ using UnityEngine.Events;
 
 public class Grabbable : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D other) {
+		
 	}
 }
