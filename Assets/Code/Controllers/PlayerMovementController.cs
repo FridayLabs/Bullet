@@ -13,7 +13,7 @@ public class PlayerMovementController : MonoBehaviour {
         _stats = GetComponent<StatsHolder>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         // movement 
         Vector2 movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _rigidbody2D.velocity = movementVector.normalized * _stats.GetStatValue("Movespeed") * movementModificator * Time.deltaTime;
