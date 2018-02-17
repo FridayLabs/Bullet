@@ -18,7 +18,6 @@ public class PlayerMovementController : MonoBehaviour {
         Vector2 movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _rigidbody2D.velocity = movementVector.normalized * _stats.GetStatValue("Movespeed") * movementModificator * Time.deltaTime;
 
-        
         // rotation
         var pos = Camera.main.WorldToScreenPoint(transform.position);
         var dir = Input.mousePosition - pos;

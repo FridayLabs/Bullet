@@ -2,7 +2,7 @@
 	protected Toolbox () {}
  
 	void Awake () {
-		// Your initialization code here
+		DontDestroyOnLoad(this);
 	}
 
 }

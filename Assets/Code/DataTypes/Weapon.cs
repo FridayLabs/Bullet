@@ -9,8 +9,12 @@ public class Weapon : ScriptableObject {
 	public float BulletStartVelosity = 5f;
 	public float BulletRange = 5f;
 
-	public float AimArcLength = 0.2f;
-	public float AimSpeed = 0.1f;
+	[Range(3, 13)]
+	public float AimArcLength = 3f;
+	
+	[Range(0, 2)]
+	public float AimSpeed = 1f;
 
-	public float MovementModifier = 0.4f;
+	[Range(0, 3)]
+	public float MovementModifier = 1f;
 }
