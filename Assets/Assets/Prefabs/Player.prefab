@@ -22,11 +22,12 @@ GameObject:
   - component: {fileID: 212022247419352242}
   - component: {fileID: 50614680710995228}
   - component: {fileID: 60463844319253404}
-  - component: {fileID: 114020674643970432}
+  - component: {fileID: 114239798714035266}
   - component: {fileID: 114764272206894012}
+  - component: {fileID: 114109049814098084}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834303710235462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.97, y: -0.29, z: 0}
+  m_LocalPosition: {x: -3.05, y: -0.96, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -139,7 +140,27 @@ PolygonCollider2D:
       - {x: 0.155, y: -0.47}
       - {x: 0.035, y: -0.48}
       - {x: 0.044999998, y: -0.48999998}
---- !u!114 &114020674643970432
+--- !u!114 &114109049814098084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834303710235462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05424b8d7376c4ae0b498b8f8ff8f147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stats:
+  - name: Movespeed
+    value: 0
+  - name: Acceleration
+    value: 0
+  - name: Inertia
+    value: 0
+  - name: MeleeAttackRange
+    value: 0
+--- !u!114 &114239798714035266
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -150,18 +171,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a945839b8bef45ec9dee7b9665bc77f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Perk: {fileID: 11400000, guid: 04dce5b24095e4580a6bb76dc156d07d, type: 2}
 --- !u!114 &114764272206894012
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834303710235462}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb918f2fdfddd475f8ac39d7afca77bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Perk: {fileID: 0}
+  canShoot: 0
+  canEquip: 1
+  _bullet: {fileID: 0}
+  GrabbedBullet:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114764272206894012}
+        m_MethodName: EquipBullet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212022247419352242
 SpriteRenderer:
   m_ObjectHideFlags: 1
