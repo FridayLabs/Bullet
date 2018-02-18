@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class PlayerAimController : MonoBehaviour {
+public class PlayerAimController : NetworkBehaviour {
     private Rigidbody2D _rigidBody;
     private WeaponHolder _weaponHolder;
     private int _aimMovingSide = -1;
@@ -17,11 +18,13 @@ public class PlayerAimController : MonoBehaviour {
         _weaponHolder = GetComponent<WeaponHolder>();
         _currentAimArcLength = _weaponHolder.weapon.AimArcLength;
         _initialAimTransform = GetChild("Aim").localPosition;
-        Debug.Log(_initialAimTransform);
     }
 
     // Update is called once per frame
     void FixedUpdate() {
+        if (!isLocalPlayer) {
+            return;
+        }
         TriggerAim(Input.GetButton("Fire2"));
         UpdateAimArcLength();
         UpdateAimPosition();
@@ -62,7 +65,7 @@ public class PlayerAimController : MonoBehaviour {
 
     void UpdateArcScale() {
         var aimArc = GetChild("AimArc");
-        aimArc.localScale = new Vector3(0.1f, Mathf.PI * 10f * _currentAimArcLength / 180, 0);
+        aimArc.localScale = new Vector3(0.05f, Mathf.PI * aimArc.localPosition.x * _currentAimArcLength / 180, 0);
     }
 
     void ResetAimPosition() {
