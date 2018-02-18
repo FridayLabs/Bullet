@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class PlayerShootController : MonoBehaviour {
+public class PlayerShootController : NetworkBehaviour {
     public UnityEvent OnShoot = new UnityEvent();
     
     public GameObject BulletProjectile;
@@ -24,20 +25,30 @@ public class PlayerShootController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
-        if (Input.GetButton("Fire1") && _bulletHolder.HasBullet) {
-            Shoot();
+        if (!isLocalPlayer) {
+            return;
+        }
+        if (Input.GetButton("Fire1")) {
+            CmdShoot();
         }
     }
 
-    private void Shoot() {
+    [Command]
+    private void CmdShoot() {
+        if (!_bulletHolder.HasBullet) {
+            return;
+        }
         var bullet = Instantiate(BulletProjectile, BulletSpawn.position, BulletSpawn.rotation);
         var shootVector = (GetChild("Aim").transform.position - BulletSpawn.position).normalized;
         
         bullet.GetComponent<Rigidbody2D>().velocity = shootVector * _weaponHolder.weapon.BulletStartVelosity;
         bullet.GetComponent<HittableBulletController>().SetBulletEnd(BulletEnd);
-        _bulletHolder.HasBullet = false;
         
         OnShoot.Invoke();
+        NetworkServer.Spawn(bullet);
+
+        _bulletHolder.CmdLoseBullet();
+        _bulletHolder.HasBullet = false;
     }
     
     

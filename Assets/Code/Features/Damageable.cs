@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class Damageable : MonoBehaviour {
+public class Damageable : NetworkBehaviour {
 	public UnityEvent OnTakeDamage = new UnityEvent();
 	
 	private StatsHolder _stats;
@@ -12,7 +13,8 @@ public class Damageable : MonoBehaviour {
 		_stats = GetComponent<StatsHolder>();
 	}
 	
-	public void TakeDamage(float damage) {
+	[Command]
+	public void CmdTakeDamage(float damage) {
 		var hp = _stats.GetStatValue("HP");
 		_stats.SetStatValue("HP", hp - damage);
 		

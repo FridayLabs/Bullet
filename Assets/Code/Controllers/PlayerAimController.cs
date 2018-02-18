@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class PlayerAimController : MonoBehaviour {
+public class PlayerAimController : NetworkBehaviour {
     private Rigidbody2D _rigidBody;
     private WeaponHolder _weaponHolder;
     private int _aimMovingSide = -1;
@@ -21,6 +22,9 @@ public class PlayerAimController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
+        if (!isLocalPlayer) {
+            return;
+        }
         TriggerAim(Input.GetButton("Fire2"));
         UpdateAimArcLength();
         UpdateAimPosition();

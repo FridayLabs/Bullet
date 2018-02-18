@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class Dieable : MonoBehaviour {
-	public bool IsAlive = true;
-	public UnityEvent OnDie = new UnityEvent();
-	public UnityEvent OnResurect = new UnityEvent();
+public class Dieable : NetworkBehaviour {
+
+	public Sprite DeadSprite;
 	
+	[SyncVar]
+	public bool IsAlive = true;
+
 	private StatsHolder _stats;
 
 	void Start() {
@@ -19,10 +22,15 @@ public class Dieable : MonoBehaviour {
 		IsAlive = _stats.GetStatValue("HP") > 0;
 
 		if (oldIsAlive && !IsAlive) {
-			OnDie.Invoke();
+			RpcDie();
 		}
-		if (!oldIsAlive && IsAlive) {
-			OnResurect.Invoke();
-		}
+	}
+
+	[ClientRpc]
+	void RpcDie() {
+		GetComponent<PlayerMovementController>().enabled = false;
+		GetComponent<PlayerAimController>().enabled = false;
+		GetComponent<PlayerShootController>().enabled = false;
+		GetComponent<SpriteRenderer>().sprite = DeadSprite;
 	}
 }

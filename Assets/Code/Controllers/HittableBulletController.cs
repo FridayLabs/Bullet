@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class HittableBulletController : MonoBehaviour {
-    public UnityEvent OnBulletStop = new UnityEvent();
-    public UnityEvent OnBulletWallCollide = new UnityEvent();
+public class HittableBulletController : NetworkBehaviour {
     public GameObject GrabbableBulletPrefab;
     
     private GameObject _bulletEnd;
@@ -17,22 +16,29 @@ public class HittableBulletController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject == _bulletEnd) {
-            OnBulletStop.Invoke();
+            HandleBulletCollision();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.GetComponent<BulletStoppable>()) {
-            OnBulletWallCollide.Invoke();
-            OnBulletStop.Invoke();
+            HandleBulletCollision();
         }
     }
 
-    public void SpawnGrabbableBullet() {
-        Instantiate(GrabbableBulletPrefab, transform.position, transform.rotation);
+    private void HandleBulletCollision() {
+        CmdDestroy();
+        CmdSpawnGrabbableBullet();
+    }
+    
+    [Command]
+    public void CmdSpawnGrabbableBullet() {
+        var bullet = Instantiate(GrabbableBulletPrefab, transform.position, transform.rotation);
+        NetworkServer.Spawn(bullet);
     }
 
-    public void Destroy() {
+    [Command]
+    public void CmdDestroy() {
         Destroy(gameObject);
     }
 }
