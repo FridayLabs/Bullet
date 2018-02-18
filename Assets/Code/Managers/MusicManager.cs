@@ -5,8 +5,6 @@ public class MusicManager : MonoBehaviour {
 
 	public AudioMixer masterMixer;
 
-	private static bool IsAlreadyCreated = false;
-
 	public void SetMasterLevel (float masterLevel) {
 		masterMixer.SetFloat("MasterVol", masterLevel);
 	}

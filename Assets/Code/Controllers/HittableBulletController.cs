@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class HittableBulletController : MonoBehaviour {
     public UnityEvent OnBulletStop = new UnityEvent();
+    public UnityEvent OnBulletWallCollide = new UnityEvent();
     public GameObject GrabbableBulletPrefab;
     
     private GameObject _bulletEnd;
@@ -22,6 +23,7 @@ public class HittableBulletController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.GetComponent<BulletStoppable>()) {
+            OnBulletWallCollide.Invoke();
             OnBulletStop.Invoke();
         }
     }
