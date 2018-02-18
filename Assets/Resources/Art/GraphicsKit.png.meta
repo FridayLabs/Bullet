@@ -47,6 +47,7 @@ TextureImporter:
     21300080: ui_light_assault_rifle
     21300082: ui_sniper_rifle
     21300084: ui_machine_gun
+    21300086: Died_man
     21300086: empty_char
     21300088: blood
     21300090: cursor_selected
@@ -915,6 +916,20 @@ TextureImporter:
         y: 670
         width: 98
         height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Died_man
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 457
+        width: 165
+        height: 183
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

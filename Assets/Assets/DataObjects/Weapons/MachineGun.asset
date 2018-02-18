@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: MachineGun
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 8
-  BulletRange: 12
+  BulletStartVelosity: 55
+  BulletRange: 11
   AimArcLength: 13
   AimSpeed: 0.65
   MovementModifier: 3

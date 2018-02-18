@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovementController : MonoBehaviour {
+public class PlayerMovementController : NetworkBehaviour {
     private Rigidbody2D _rigidbody2D;
     private StatsHolder _stats;
     private const int movementModificator = 20;
@@ -16,7 +17,10 @@ public class PlayerMovementController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        // movement
+        if (!isLocalPlayer) {
+            return;
+        }
+        // movement 
         Vector2 movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _rigidbody2D.velocity = movementVector.normalized * _stats.GetStatValue("Movespeed") * movementModificator * Time.deltaTime;
 
