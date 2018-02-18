@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: 7d3d74102a9e87b458c68fc061ff52ba
-timeCreated: 1518881851
+guid: ed92b3a84a5b2814499bb4da08c4844f
+timeCreated: 1518931935
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: chartest
+    21300000: heavy_pistol_anim_kit_0
+    21300002: heavy_pistol_anim_kit_1
+    21300004: heavy_pistol_anim_kit_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -77,27 +79,45 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chartest
+      name: heavy_pistol_anim_kit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 107
-        height: 104
+        width: 141
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: heavy_pistol_anim_kit_1
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 0
+        width: 141
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: heavy_pistol_anim_kit_2
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 0
+        width: 141
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

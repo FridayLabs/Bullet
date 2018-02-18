@@ -1,9 +1,12 @@
 fileFormatVersion: 2
-guid: 9932649768747c941a554b3e7a755589
-timeCreated: 1518881851
+guid: 5b90c9a3d3c25f44a99353b2a8bc0710
+timeCreated: 1518931934
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: light_pistol_anim_kit_0
+    21300002: light_pistol_anim_kit_1
+    21300004: light_pistol_anim_kit_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -76,19 +79,51 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: light_pistol_anim_kit_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 131
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: light_pistol_anim_kit_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 131
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: light_pistol_anim_kit_2
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 0
+        width: 131
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
