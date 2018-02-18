@@ -17,7 +17,6 @@ public class PlayerAimController : MonoBehaviour {
         _weaponHolder = GetComponent<WeaponHolder>();
         _currentAimArcLength = _weaponHolder.weapon.AimArcLength;
         _initialAimTransform = GetChild("Aim").localPosition;
-        Debug.Log(_initialAimTransform);
     }
 
     // Update is called once per frame
@@ -62,7 +61,7 @@ public class PlayerAimController : MonoBehaviour {
 
     void UpdateArcScale() {
         var aimArc = GetChild("AimArc");
-        aimArc.localScale = new Vector3(0.1f, Mathf.PI * 10f * _currentAimArcLength / 180, 0);
+        aimArc.localScale = new Vector3(0.05f, Mathf.PI * aimArc.localPosition.x * _currentAimArcLength / 180, 0);
     }
 
     void ResetAimPosition() {

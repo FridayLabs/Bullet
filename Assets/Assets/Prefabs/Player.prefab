@@ -90,6 +90,8 @@ GameObject:
   - component: {fileID: 114109049814098084}
   - component: {fileID: 114215688433663960}
   - component: {fileID: 60368743561024908}
+  - component: {fileID: 114223975666979018}
+  - component: {fileID: 114192929591535510}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -103,8 +105,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1834303710235462}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.96, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70674664, w: 0.7074668}
+  m_LocalPosition: {x: -3.05, y: -4.01, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4820711666027048}
@@ -146,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 1762190203583672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: 0.5}
-  m_LocalScale: {x: 0.10000014, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4820711666027048}
   m_RootOrder: 1
@@ -260,8 +262,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -348,7 +350,31 @@ MonoBehaviour:
     value: 12.6
   - name: MeleeAttackRange
     value: 2
+--- !u!114 &114192929591535510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834303710235462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e29eba7c11c4ec8bb27c5b4f40b332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasBullet: 0
 --- !u!114 &114215688433663960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834303710235462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd0f95720802459d8317f3bcfbceb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: 2eb1ad930160a403d899feb444b849f9, type: 2}
+--- !u!114 &114223975666979018
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
