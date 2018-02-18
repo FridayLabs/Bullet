@@ -4,25 +4,8 @@ using UnityEngine.Audio;
 public class MusicManager : MonoBehaviour {
 
 	public AudioMixer masterMixer;
-	public AudioSource audioSource;
 
 	private static bool IsAlreadyCreated = false;
-
-	void Start() {
-
-		Debug.Log("KEKEKE");
-		Debug.Log(MusicManager.IsAlreadyCreated);
-
-		if (MusicManager.IsAlreadyCreated) {
-			Destroy(gameObject);
-			return;
-		}
-
-		MusicManager.IsAlreadyCreated = true;
-		DontDestroyOnLoad(this);
-
-
-	}
 
 	public void SetMasterLevel (float masterLevel) {
 		masterMixer.SetFloat("MasterVol", masterLevel);

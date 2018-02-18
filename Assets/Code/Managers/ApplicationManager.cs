@@ -31,7 +31,7 @@ public class ApplicationManager : MonoBehaviour {
 	}
 
 	//Loading a scene with a specific name
-	public void LoadLevel(string name){
+	public static void LoadLevel(string name){
 		Debug.Log ("New Level load: " + name);
 		SceneManager.LoadScene (name);
 	}

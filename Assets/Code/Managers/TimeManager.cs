@@ -35,6 +35,11 @@ public class TimeManager : MonoBehaviour {
 			if(minuteCount >= 10) {
 				timerText.text = "∞";
 			}
+
+			//DELETE THIS! IT'S FOR PRESENTATION!
+			if(secondsCount >= 5) {
+				ApplicationManager.LoadLevel("Map1");
+			}
 		} else {
 			secondsCount = 0f;
 			minuteCount = 0;
