@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: HeavyPistol
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 6
+  BulletStartVelosity: 300
   BulletRange: 10
   AimArcLength: 5
   AimSpeed: 0.32

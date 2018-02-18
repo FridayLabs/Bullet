@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: LightPistol
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 4
+  BulletStartVelosity: 30
   BulletRange: 7
   AimArcLength: 3
   AimSpeed: 0.1
