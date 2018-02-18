@@ -223,7 +223,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &765456347
+--- !u!1001 &928181074
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -376,7 +376,7 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 4191772084570020, guid: 767dbe6af9bdf4303aa7826f7cabb000,
     type: 2}
-  m_PrefabInternal: {fileID: 765456347}
+  m_PrefabInternal: {fileID: 928181074}
 --- !u!1 &2080562767
 GameObject:
   m_ObjectHideFlags: 0

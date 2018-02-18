@@ -15,10 +15,13 @@ public class HittableBulletController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(_bulletEnd);
-        Debug.Log(other.gameObject);
         if (other.gameObject == _bulletEnd) {
-            Debug.Log("Bullet Stop");
+            OnBulletStop.Invoke();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.GetComponent<BulletStoppable>()) {
             OnBulletStop.Invoke();
         }
     }
