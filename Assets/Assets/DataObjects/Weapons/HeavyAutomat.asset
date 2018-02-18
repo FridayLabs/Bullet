@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: HeavyAutomat
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 8
-  BulletRange: 13
+  BulletStartVelosity: 55
+  BulletRange: 10
   AimArcLength: 10
   AimSpeed: 0.5
   MovementModifier: 2.75

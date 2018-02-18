@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: SniperRifle
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 10
-  BulletRange: 15
+  BulletStartVelosity: 80
+  BulletRange: 13
   AimArcLength: 11
   AimSpeed: 0.3
   MovementModifier: 2.5

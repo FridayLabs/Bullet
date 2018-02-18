@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: SMG
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 5
-  BulletRange: 5
+  BulletStartVelosity: 30
+  BulletRange: 7
   AimArcLength: 4.2
   AimSpeed: 0.3
   MovementModifier: 2
