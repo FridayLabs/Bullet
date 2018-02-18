@@ -7,16 +7,21 @@ public class PlayerMovementController : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;
     private StatsHolder _stats;
     private const int movementModificator = 20;
+    private Animator _animator;
 
     void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _stats = GetComponent<StatsHolder>();
+        _animator = GetComponent<Animator>();
     }
 
     void FixedUpdate() {
-        // movement 
+        // movement
         Vector2 movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         _rigidbody2D.velocity = movementVector.normalized * _stats.GetStatValue("Movespeed") * movementModificator * Time.deltaTime;
+
+        // setting walk animation
+		_animator.SetBool("Walk", _rigidbody2D.velocity != Vector2.zero);
 
         // rotation
         var pos = Camera.main.WorldToScreenPoint(transform.position);
