@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: LightAutomat
   m_EditorClassIdentifier: 
   Image: {fileID: 0}
-  BulletStartVelosity: 7
-  BulletRange: 12
+  BulletStartVelosity: 50
+  BulletRange: 9
   AimArcLength: 8
   AimSpeed: 0.3
   MovementModifier: 2
