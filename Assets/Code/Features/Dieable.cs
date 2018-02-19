@@ -12,9 +12,11 @@ public class Dieable : NetworkBehaviour {
 	public bool IsAlive = true;
 
 	private StatsHolder _stats;
+	private Animator _animator;
 
 	void Start() {
 		_stats = GetComponent<StatsHolder>();
+		_animator = GetComponent<Animator>();
 	}
 
 	void Update() {
@@ -32,5 +34,7 @@ public class Dieable : NetworkBehaviour {
 		GetComponent<PlayerAimController>().enabled = false;
 		GetComponent<PlayerShootController>().enabled = false;
 		GetComponent<SpriteRenderer>().sprite = DeadSprite;
+		
+		_animator.SetBool("IsAlive", false);
 	}
 }
