@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
 using UnityEngine;
 
-public class Container {
-
-    private static Container _instance;
-    
+public class GameContainer {
+    private static GameContainer _instance;
     private Dictionary<Type, object> _components = new Dictionary<Type, object>();
 
     [RuntimeInitializeOnLoadMethod]
-    private static Container getInstance() {
+    private static GameContainer getInstance() {
         if (_instance == null) {
-            _instance = new Container();
+            _instance = new GameContainer();
         }
 
         return _instance;
     }
-    
-    //TODO FFS. Research c# conatiner
+
 }

@@ -31,7 +31,7 @@ public class Aimable : MonoBehaviour {
 
         // Set Aim Sprite
         Aim.GetComponent<SpriteRenderer>().sprite = weaponOwner.GetWeapon().AimSprite;
-        
+
         SetAimWhileStanding();
     }
 
@@ -75,7 +75,7 @@ public class Aimable : MonoBehaviour {
         Vector2 forwardVec = transform.position - AimArc.transform.position;
         Vector2 aimVec = transform.position - Aim.transform.position;
 
-        var angle = Vector2.Angle(forwardVec, aimVec) * 2; 
+        var angle = Vector2.Angle(forwardVec, aimVec) * 2;
 
         if (Mathf.DeltaAngle(angle, currentAimArcLength) * 10 <= 0.01) {
             aimMovingSide *= -1;
@@ -85,10 +85,25 @@ public class Aimable : MonoBehaviour {
         Aim.transform.position = dir + transform.position;
     }
 
-    void UpdateArcScale(float length) {
-        var scale = AimArc.transform.localScale;
-        scale.y = Mathf.PI * weaponOwner.GetWeapon().AimRange * length / 180; 
-        AimArc.transform.localScale = scale;
+    void UpdateArcScale(float angle) {
+        var line = AimArc.gameObject.GetComponent<LineRenderer>();
+
+        var resolution = 10;
+        line.SetVertexCount(resolution + 1);
+
+        var vec = AimArc.transform.position - transform.position;
+        var radius = vec.magnitude;
+
+        var a = -angle / 2;
+        var d = angle / resolution;
+        for (var i = 0; i <= resolution; i++) {
+            var x = Mathf.Cos(Mathf.Deg2Rad * a) * radius - radius;
+            var y = Mathf.Sin(Mathf.Deg2Rad * a) * radius;
+
+            line.SetPosition(i, new Vector3(x, y, 0));
+
+            a += d;
+        }
     }
 
     void ResetAimPosition() {
