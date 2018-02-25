@@ -61,6 +61,10 @@ public class Aimable : MonoBehaviour {
         SetAimArcLength(weaponOwner.GetWeapon().SpreadLength);
     }
 
+    public Vector2 GetAimVector() {
+        return (Aim.transform.position - transform.position).normalized;
+    }
+
     private void SetAimArcLength(float newAimArcLength) {
         if (newAimArcLength != currentAimArcLength) {
             currentAimArcLength = newAimArcLength;

@@ -6,6 +6,8 @@ public class Weapon : DataType {
     public Sprite WeaponSprite;
     
     public Sprite AimSprite;
+
+    public GameObject ProjectilePrefab;
     
     [Range(10, 100)]
     public float BulletVelocity = 25f;
@@ -24,4 +26,8 @@ public class Weapon : DataType {
     
     [Range(0, 5)]
     public float AimSpeed = 8f;
+
+    public int MagazineCount = 7;
+
+    public float ShootCooldown = 1f;
 }
