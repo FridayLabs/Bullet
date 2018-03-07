@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114208701605040926}
   - component: {fileID: 61486681138870324}
   m_Layer: 8
-  m_Name: Floor
+  m_Name: WoodenFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.47, y: 1.44}
+    oldSize: {x: 1.48, y: 1.44}
     newSize: {x: 1.47, y: 1.44}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73bc139180b49e884f89339baea6191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  substance: {fileID: 11400000, guid: 09dcd0dc06c894879b63110cc3a6829a, type: 2}
+  substance: {fileID: 11400000, guid: 16657770587f34afd981c7637a504dbf, type: 2}
 --- !u!114 &114388149408992552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,7 +125,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  m_Sprite: {fileID: 21300014, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
