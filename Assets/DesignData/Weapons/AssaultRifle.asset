@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeveloperDescription: 
   Sprite: {fileID: 0}
+  FriendlyName: Assault Rifle (fire boost)
   ProjectilePrefab: {fileID: 1842194658239190, guid: b5b1cb39689ea4862a815f384e4fce50,
     type: 2}
   BulletVelocity: 25

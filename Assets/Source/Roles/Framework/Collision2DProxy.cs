@@ -10,7 +10,7 @@ public class ProxyEvent : UnityEvent<Collider2D> {
 public class Collision2DProxy : MonoBehaviour {
 
     public ProxyEvent OnTriggerEnter, OnTriggerExit;
-    
+
     private void OnTriggerEnter2D(Collider2D other) {
         OnTriggerEnter.Invoke(other);
     }
