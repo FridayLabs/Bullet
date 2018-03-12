@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class CameraController : MonoBehaviour {
-    public Transform Player;
+public class Overviewer : MonoBehaviour {
+    public Transform Target;
 
     private float overviewRadius = 5f;
 
@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour {
 
     void LateUpdate() {
         Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 playerPos = Player.position;
+        Vector2 playerPos = Target.position;
 
         Vector2 diff = (cursorPos - playerPos) / 2f;
         diff = Vector2.ClampMagnitude(diff, overviewRadius);

@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Data/Weapon")]
-public class Weapon : DataType {
-
-    public Sprite WeaponSprite;
-    
-    public Sprite AimSprite;
+public class Weapon : Equipment {
 
     public GameObject ProjectilePrefab;
     
