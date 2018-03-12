@@ -5,11 +5,11 @@ public class FootstepsSounder : MonoBehaviour {
     [SerializeField]
     [Range(1f, 3f)]
     private float minPitchValue = 1f;
-    
+
     [SerializeField]
     [Range(1f, 3f)]
     private float maxPitchValue = 2f;
-    
+
     private AudioSource audioSource;
 
     private void Start() {
@@ -24,7 +24,7 @@ public class FootstepsSounder : MonoBehaviour {
                 Substance substance = consistingOfSubstance.GetSubstance();
                 audioSource.clip = substance.FootstepsSound;
                 audioSource.pitch = Random.Range(minPitchValue, maxPitchValue);
-                audioSource.Play();                
+                audioSource.Play();
             } else {
                 Debug.LogWarning("Looks like there is no substance on ground " + hit.collider.name);
             }

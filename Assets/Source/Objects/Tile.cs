@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour {
 	private void OnDrawGizmos() {
-		
+
 	}
 
 	private void drawGizmo(Vector3 pos) {

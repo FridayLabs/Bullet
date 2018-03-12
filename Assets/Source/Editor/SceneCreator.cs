@@ -6,22 +6,23 @@ using UnityEngine.SceneManagement;
 [InitializeOnLoad]
 public class SceneCreator {
 
-	static SceneCreator() {
+    static SceneCreator () {
 
-		EditorSceneManager.newSceneCreated += CreateScene;
-	}
+        EditorSceneManager.newSceneCreated += CreateScene;
+    }
 
-	private static void CreateScene(Scene scene, NewSceneSetup setup, NewSceneMode mode) {
+    private static void CreateScene (Scene scene, NewSceneSetup setup, NewSceneMode mode) {
 
-		var camera = scene.GetRootGameObjects()[0];
-		
-		new GameObject("[SETUP]");
-		
-		var worldGO = new GameObject("[WORLD]").transform;
-		new GameObject("[UI]");
-		
-		var camerasGO = new GameObject("Cameras").transform;
-		camerasGO.SetParent(worldGO);
-		camera.transform.SetParent(camerasGO);
-	}
+        var camera = scene.GetRootGameObjects () [0];
+
+        GameObject setupObj = new GameObject ("[SETUP]");
+        setupObj.AddComponent<ObjectPooler>();
+
+        var worldGO = new GameObject ("[WORLD]").transform;
+        new GameObject ("[UI]");
+
+        var camerasGO = new GameObject ("Cameras").transform;
+        camerasGO.SetParent (worldGO);
+        camera.transform.SetParent (camerasGO);
+    }
 }
