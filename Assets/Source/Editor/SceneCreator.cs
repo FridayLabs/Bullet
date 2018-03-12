@@ -16,7 +16,7 @@ public class SceneCreator {
         var camera = scene.GetRootGameObjects () [0];
 
         GameObject setupObj = new GameObject ("[SETUP]");
-        setupObj.AddComponent<ObjectPooler>();
+        setupObj.AddComponent<ObjectPooler> ();
 
         var worldGO = new GameObject ("[WORLD]").transform;
         new GameObject ("[UI]");

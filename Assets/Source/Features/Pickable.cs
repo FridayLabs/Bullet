@@ -8,12 +8,12 @@ public class Pickable : MonoBehaviour {
 
     public UnityEvent OnHighlight, OnDehighlight;
 
-    public void Highlight() {
-        OnHighlight.Invoke();
+    public void Highlight () {
+        OnHighlight.Invoke ();
     }
 
-    public void Dehighlight() {
-        OnDehighlight.Invoke();
+    public void Dehighlight () {
+        OnDehighlight.Invoke ();
     }
 
     public Equipment GetEquipment () {

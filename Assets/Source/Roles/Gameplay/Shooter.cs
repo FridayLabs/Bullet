@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(WeaponOwner))]
-[RequireComponent(typeof(Aimer))]
+[RequireComponent (typeof (WeaponOwner))]
+[RequireComponent (typeof (Aimer))]
 public class Shooter : MonoBehaviour {
     public Transform BulletSpawn;
 
@@ -18,36 +18,36 @@ public class Shooter : MonoBehaviour {
 
     private int currentBulletsInMagazine;
 
-    void Start() {
-        aim = GetComponent<Aimer>();
-        weaponOwner = GetComponent<WeaponOwner>();
+    void Start () {
+        aim = GetComponent<Aimer> ();
+        weaponOwner = GetComponent<WeaponOwner> ();
 
         lastShootTime = Time.fixedTime;
-        currentBulletsInMagazine = weaponOwner.GetWeapon().MagazineCount;
+        currentBulletsInMagazine = weaponOwner.GetWeapon ().MagazineCount;
     }
 
-    void FixedUpdate() {
-        if (Input.GetButton("Fire1") && IsShootCooldownExpired()) {
+    void FixedUpdate () {
+        if (Input.GetButton ("Fire1") && IsShootCooldownExpired ()) {
             if (currentBulletsInMagazine <= 0) {
-                OnRealoadMisfire.Invoke();
+                OnRealoadMisfire.Invoke ();
                 return;
             }
 
-            shoot();
-            OnShoot.Invoke();
+            shoot ();
+            OnShoot.Invoke ();
             lastShootTime = Time.fixedTime;
             currentBulletsInMagazine--;
         }
     }
 
-    private bool IsShootCooldownExpired() {
-        return Time.fixedTime - lastShootTime > weaponOwner.GetWeapon().ShootCooldown;
+    private bool IsShootCooldownExpired () {
+        return Time.fixedTime - lastShootTime > weaponOwner.GetWeapon ().ShootCooldown;
     }
 
-    private void shoot() {
-        var dir = aim.GetAimVector();
-        var prefab = weaponOwner.GetWeapon().ProjectilePrefab;
-        var bullet = Instantiate(prefab, BulletSpawn.position, BulletSpawn.rotation);
-        bullet.GetComponent<Rigidbody2D>().velocity = dir * weaponOwner.GetWeapon().BulletVelocity;
+    private void shoot () {
+        var dir = aim.GetAimVector ();
+        var prefab = weaponOwner.GetWeapon ().ProjectilePrefab;
+        var bullet = Instantiate (prefab, BulletSpawn.position, BulletSpawn.rotation);
+        bullet.GetComponent<Rigidbody2D> ().velocity = dir * weaponOwner.GetWeapon ().BulletVelocity;
     }
 }

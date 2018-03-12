@@ -2,9 +2,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class PickableEvent: UnityEvent<Pickable> {}
 public class Picker : MonoBehaviour {
+
+    [System.Serializable]
+    public class PickableEvent : UnityEvent<Pickable> { }
 
     public PickableEvent OnPickupHighlightChanged;
 
@@ -30,7 +31,7 @@ public class Picker : MonoBehaviour {
             if (currentClosestPickup) {
                 currentClosestPickup.GetComponent<Pickable> ().Dehighlight ();
                 currentClosestPickup = null;
-                OnPickupHighlightChanged.Invoke(null);
+                OnPickupHighlightChanged.Invoke (null);
             }
             return;
         }
@@ -52,7 +53,7 @@ public class Picker : MonoBehaviour {
             }
             highlightenGO.GetComponent<Pickable> ().Highlight ();
             currentClosestPickup = highlightenGO;
-            OnPickupHighlightChanged.Invoke(highlightenGO.GetComponent<Pickable> ());
+            OnPickupHighlightChanged.Invoke (highlightenGO.GetComponent<Pickable> ());
         }
     }
 }
