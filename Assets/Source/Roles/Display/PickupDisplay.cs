@@ -12,6 +12,9 @@ public class PickupDisplay : MonoBehaviour {
         textFormat = Text.text;
     }
 
+    /**
+     * Should be triggered by Player's Picker
+     */
     public void UpdateHighlight (Pickable pickable) {
         if (pickable) {
             gameObject.SetActive (true);

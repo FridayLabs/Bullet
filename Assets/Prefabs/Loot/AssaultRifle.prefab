@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 60720042643603704}
   - component: {fileID: 212265812008190786}
   - component: {fileID: 114533469026523902}
+  - component: {fileID: 114378227993014546}
+  - component: {fileID: 114633054211598450}
   m_Layer: 0
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891644617946862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.52, y: -0.07, z: 0}
+  m_LocalPosition: {x: 12.2, y: -0.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,6 +79,23 @@ PolygonCollider2D:
       - {x: 0.07, y: -0.16499999}
       - {x: 0.049999997, y: -0.044999998}
       - {x: 0.28, y: -0.005}
+--- !u!114 &114378227993014546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891644617946862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _glowColor: {r: 0.8454839, g: 0.88235295, b: 0.21410035, a: 1}
+  _glowBrightness: 1
+  _outlineWidth: 0
+  _alphaThreshold: 0.32
+  _drawOutside: 1
+  _enableInstancing: 0
 --- !u!114 &114533469026523902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,17 +107,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775907f732678444b90c37ca5f5bc20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupItem: {fileID: 11400000, guid: 7dbc903d93c944266afce064dd341aa1, type: 2}
   OnHighlight:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114378227993014546}
+        m_MethodName: set_OutlineWidth
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnDehighlight:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114378227993014546}
+        m_MethodName: set_OutlineWidth
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114633054211598450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891644617946862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FriendlyName: Assault Rifle
+  Sprite: {fileID: 21300078, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  Stackable: 0
+  ProjectilePrefab: {fileID: 0}
+  BulletVelocity: 25
+  BulletRange: 6
+  AimRange: 6
+  LongAimRange: 10
+  MagazineCount: 30
+  ShootCooldown: 0.3
 --- !u!212 &212265812008190786
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -113,7 +174,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -8,46 +8,46 @@ using UnityEngine.Events;
 public class Shooter : MonoBehaviour {
     public Transform BulletSpawn;
 
-    public UnityEvent OnShoot;
-    public UnityEvent OnRealoadMisfire;
+    // public UnityEvent OnShoot;
+    // public UnityEvent OnRealoadMisfire;
 
-    private WeaponOwner weaponOwner;
-    private Aimer aim;
+    // private WeaponOwner weaponOwner;
+    // private Aimer aim;
 
-    private float lastShootTime;
+    // private float lastShootTime;
 
-    private int currentBulletsInMagazine;
+    // private int currentBulletsInMagazine;
 
-    void Start () {
-        aim = GetComponent<Aimer> ();
-        weaponOwner = GetComponent<WeaponOwner> ();
+    // void Start () {
+    //     aim = GetComponent<Aimer> ();
+    //     weaponOwner = GetComponent<WeaponOwner> ();
 
-        lastShootTime = Time.fixedTime;
-        currentBulletsInMagazine = weaponOwner.GetWeapon ().MagazineCount;
-    }
+    //     lastShootTime = Time.fixedTime;
+    //     // currentBulletsInMagazine = weaponOwner.GetWeapon ().MagazineCount;
+    // }
 
-    void FixedUpdate () {
-        if (Input.GetButton ("Fire1") && IsShootCooldownExpired ()) {
-            if (currentBulletsInMagazine <= 0) {
-                OnRealoadMisfire.Invoke ();
-                return;
-            }
+    // void FixedUpdate () {
+    //     if (Input.GetButton ("Fire1") && IsShootCooldownExpired ()) {
+    //         if (currentBulletsInMagazine <= 0) {
+    //             OnRealoadMisfire.Invoke ();
+    //             return;
+    //         }
 
-            shoot ();
-            OnShoot.Invoke ();
-            lastShootTime = Time.fixedTime;
-            currentBulletsInMagazine--;
-        }
-    }
+    //         shoot ();
+    //         OnShoot.Invoke ();
+    //         lastShootTime = Time.fixedTime;
+    //         currentBulletsInMagazine--;
+    //     }
+    // }
 
-    private bool IsShootCooldownExpired () {
-        return Time.fixedTime - lastShootTime > weaponOwner.GetWeapon ().ShootCooldown;
-    }
+    // private bool IsShootCooldownExpired () {
+    //     // return Time.fixedTime - lastShootTime > weaponOwner.GetWeapon ().ShootCooldown;
+    // }
 
-    private void shoot () {
-        var dir = aim.GetAimVector ();
-        var prefab = weaponOwner.GetWeapon ().ProjectilePrefab;
-        var bullet = Instantiate (prefab, BulletSpawn.position, BulletSpawn.rotation);
-        bullet.GetComponent<Rigidbody2D> ().velocity = dir * weaponOwner.GetWeapon ().BulletVelocity;
-    }
+    // private void shoot () {
+    //     var dir = aim.GetAimVector ();
+    //     // var prefab = weaponOwner.GetWeapon ().ProjectilePrefab;
+    //     var bullet = Instantiate (prefab, BulletSpawn.position, BulletSpawn.rotation);
+    //     // bullet.GetComponent<Rigidbody2D> ().velocity = dir * weaponOwner.GetWeapon ().BulletVelocity;
+    // }
 }

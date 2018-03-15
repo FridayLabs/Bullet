@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu (fileName = "Weapon", menuName = "Data/Weapon")]
 public class Weapon : Equipment {
     [Space (10)]
     public GameObject ProjectilePrefab;

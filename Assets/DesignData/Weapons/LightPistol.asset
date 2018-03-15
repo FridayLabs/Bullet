@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Name: LightPistol
   m_EditorClassIdentifier: 
   DeveloperDescription: "Light pistom weapon. Good for policemans. \nBad for bad guys."
-  Sprite: {fileID: 0}
   FriendlyName: Light Pistol (9mm)
+  Sprite: {fileID: 0}
+  SlotType: {fileID: 11400000, guid: 4c9fb78657a634a60887c2a88b892a4b, type: 2}
+  Stackable: 0
   ProjectilePrefab: {fileID: 1842194658239190, guid: b5b1cb39689ea4862a815f384e4fce50,
     type: 2}
   BulletVelocity: 25

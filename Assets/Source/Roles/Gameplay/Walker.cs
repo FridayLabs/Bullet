@@ -21,7 +21,7 @@ public class Walker : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        Vector2 movementVector = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical")); // TODO
+        Vector2 movementVector = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
         rigidbody.velocity = movementVector.normalized * MoveSpeed * movementModifier * Time.fixedDeltaTime;
 
         if (!isWalking && rigidbody.velocity != Vector2.zero) {

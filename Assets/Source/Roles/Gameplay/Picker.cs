@@ -25,6 +25,9 @@ public class Picker : MonoBehaviour {
             currentPickables.Remove (other.gameObject);
         }
     }
+    public Pickable GetHighlightedPickable () {
+        return currentClosestPickup ? currentClosestPickup.GetComponent<Pickable> () : null;
+    }
 
     private void LateUpdate () {
         if (currentPickables.Count <= 0) {
