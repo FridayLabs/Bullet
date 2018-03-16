@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9661e6c03ec0940c38034b1127def044, type: 3}
   m_Name: GenericBulletsType
   m_EditorClassIdentifier: 
+  Sprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}

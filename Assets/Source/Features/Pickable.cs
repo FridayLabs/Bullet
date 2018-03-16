@@ -21,13 +21,23 @@ public class Pickable : MonoBehaviour {
         OnDehighlight.Invoke ();
     }
 
-    public void Pick () {
-        gameObject.SetActive (false);
+    public void Pick (int count) {
+        if (equipment.IsStackable) {
+            equipment.StackCount -= count;
+            if (equipment.StackCount <= 0) {
+                gameObject.SetActive (false);
+            }
+        } else {
+            gameObject.SetActive (false);
+        }
     }
 
-    public void Drop (Transform dropSpawn) {
+    public void Drop (Transform dropSpawn, int count) {
         transform.position = dropSpawn.position;
         transform.rotation = dropSpawn.rotation;
+        if (equipment.IsStackable) {
+            equipment.StackCount = count;
+        }
         gameObject.SetActive (true);
     }
 

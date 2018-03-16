@@ -318,7 +318,8 @@ MonoBehaviour:
   DropSpawn: {fileID: 4037640868927458}
   slotsCount: 6
   bulletsSlots:
-  - {fileID: 11400000, guid: 9ca409db494824a8da708d0edd5ba20d, type: 2}
+  - SlotType: {fileID: 11400000, guid: 9ca409db494824a8da708d0edd5ba20d, type: 2}
+    StackCount: 0
 --- !u!114 &114264910286292554
 MonoBehaviour:
   m_ObjectHideFlags: 1

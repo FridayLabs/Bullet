@@ -10,7 +10,7 @@ public class EquipmentSlotDisplay : MonoBehaviour {
     [SerializeField] private UnityEngine.Color ActiveColor;
     private UnityEngine.Color inactiveColor;
 
-    private void Start () {
+    private void Awake () {
         inactiveColor = GetComponent<Image> ().color;
     }
 

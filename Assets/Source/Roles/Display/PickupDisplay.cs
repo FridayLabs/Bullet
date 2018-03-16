@@ -18,9 +18,10 @@ public class PickupDisplay : MonoBehaviour {
     public void UpdateHighlight (Pickable pickable) {
         if (pickable) {
             gameObject.SetActive (true);
+            Equipment equipment = pickable.GetEquipment ();
             Text.text = textFormat
                 .Replace ("%key%", "E") // TODO
-                .Replace ("%equipment name%", pickable.GetEquipment ().FriendlyName);
+                .Replace ("%equipment name%", equipment.FriendlyName + (equipment.IsStackable ? " (" + equipment.StackCount + ")" : ""));
         } else {
             gameObject.SetActive (false);
         }

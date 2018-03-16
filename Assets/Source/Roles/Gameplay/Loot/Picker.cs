@@ -7,6 +7,8 @@ public class Picker : MonoBehaviour {
     [System.Serializable]
     public class PickableEvent : UnityEvent<Pickable> { }
 
+    public Transform DropSpawn;
+
     public PickableEvent OnPickupHighlightChanged;
 
     private readonly List<GameObject> currentPickables = new List<GameObject> ();
@@ -29,7 +31,21 @@ public class Picker : MonoBehaviour {
         return currentClosestPickup ? currentClosestPickup.GetComponent<Pickable> () : null;
     }
 
+    public void Pick (Pickable pickable, int count) {
+        pickable.Pick (count);
+        updateHighlight (true);
+    }
+
+    public void Drop (Pickable pickable, int count) {
+        pickable.Drop (DropSpawn, count);
+        updateHighlight (true);
+    }
+
     private void LateUpdate () {
+        updateHighlight (false);
+    }
+
+    private void updateHighlight (bool force) {
         if (currentPickables.Count <= 0) {
             if (currentClosestPickup) {
                 currentClosestPickup.GetComponent<Pickable> ().Dehighlight ();
@@ -50,7 +66,7 @@ public class Picker : MonoBehaviour {
             }
         }
 
-        if (currentClosestPickup != highlightenGO) {
+        if (force || currentClosestPickup != highlightenGO) {
             if (currentClosestPickup) {
                 currentClosestPickup.GetComponent<Pickable> ().Dehighlight ();
             }
