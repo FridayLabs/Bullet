@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FriendlyName: General bullets
   UISprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
-  IsStackable: 1
+  AutoPickup: 1
   StackCount: 30
   MaxStackCount: 50
   SlotType: {fileID: 11400000, guid: 9ca409db494824a8da708d0edd5ba20d, type: 2}

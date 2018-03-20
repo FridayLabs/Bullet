@@ -12,7 +12,7 @@ public class Equipper : MonoBehaviour {
     [System.Serializable]
     public class ActiveSlotEvent : UnityEvent<int> { }
 
-    public EquipEvent OnEquip, OnDrop;
+    public EquipEvent OnEquip, OnDrop, OnBulletEquip;
     public ActiveSlotEvent OnChangeActiveSlot;
 
     private Picker picker;
@@ -51,10 +51,10 @@ public class Equipper : MonoBehaviour {
     }
 
     private void LateUpdate () {
-        if (Input.GetKeyDown (KeyCode.E)) { // TODO
-            Pickable pickable = picker.GetHighlightedPickable ();
-            if (pickable) {
-                Equipment pickupEquipment = pickable.GetEquipment ();
+        Pickable pickable = picker.GetHighlightedPickable ();
+        if (pickable) {
+            Equipment pickupEquipment = pickable.GetEquipment ();
+            if (pickupEquipment.AutoPickup || Input.GetKeyDown (KeyCode.E)) { // TODO
                 if (typeof (BulletsPack) == pickupEquipment.GetType ()) {
                     equipBullets (pickable);
                 } else {
@@ -102,16 +102,20 @@ public class Equipper : MonoBehaviour {
         BulletsPack bp = pickable.GetEquipment () as BulletsPack;
         for (int i = 0; i < bulletsSlots.Length; i++) {
             BulletSlot slot = bulletsSlots[i];
-            if (slot.SlotType == bp.SlotType) {
-                if (slot.StackCount < bp.MaxStackCount) { // carry less then can
-                    int d = bp.MaxStackCount - slot.StackCount;
-                    int take = (d > bp.StackCount) ? bp.StackCount : d;
-                    if (take > 0) {
-                        picker.Pick (pickable, take);
-                        bulletsSlots[i].StackCount += take;
-                    }
-                }
+            if (slot.SlotType != bp.SlotType) {
+                continue;
             }
+            if (slot.StackCount >= bp.MaxStackCount) { // already carry maximum of this bullet
+                continue;
+            }
+            int d = bp.MaxStackCount - slot.StackCount;
+            int take = (d > bp.StackCount) ? bp.StackCount : d;
+            if (take <= 0) { // cannot take negative number
+                break;
+            }
+            OnBulletEquip.Invoke (i, bp);
+            picker.Pick (pickable, take);
+            bulletsSlots[i].StackCount += take;
         }
     }
 

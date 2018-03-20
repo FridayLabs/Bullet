@@ -7,6 +7,8 @@ public class Equipment : MonoBehaviour {
     [Space (10)]
     public Sprite UISprite;
 
+    public bool AutoPickup = false;
+
     [Tooltip ("Used only when equipment is Stackable")]
     public int StackCount = 1;
 
