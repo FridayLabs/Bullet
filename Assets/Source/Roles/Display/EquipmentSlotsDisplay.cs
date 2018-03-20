@@ -15,7 +15,7 @@ public class EquipmentSlotsDisplay : MonoBehaviour {
 
     public void Equip (int slotIdx, Equipment equipment) {
         EquipmentSlotDisplay slot = slots[slotIdx];
-        slot.ChangeImage (equipment.Sprite);
+        slot.ChangeImage (equipment.UISprite);
     }
 
     public void Drop (int slotIdx, Equipment equipment) {

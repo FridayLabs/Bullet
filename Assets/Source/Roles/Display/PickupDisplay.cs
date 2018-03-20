@@ -21,7 +21,7 @@ public class PickupDisplay : MonoBehaviour {
             Equipment equipment = pickable.GetEquipment ();
             Text.text = textFormat
                 .Replace ("%key%", "E") // TODO
-                .Replace ("%equipment name%", equipment.FriendlyName + (equipment.IsStackable ? " (" + equipment.StackCount + ")" : ""));
+                .Replace ("%equipment name%", equipment.FriendlyName + (equipment.IsStackable () ? " (" + equipment.StackCount + ")" : ""));
         } else {
             gameObject.SetActive (false);
         }

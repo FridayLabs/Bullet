@@ -5,13 +5,19 @@ public class Equipment : MonoBehaviour {
     public string FriendlyName;
 
     [Space (10)]
-    public Sprite Sprite;
-
-    public bool IsStackable = false;
+    public Sprite UISprite;
 
     [Tooltip ("Used only when equipment is Stackable")]
     public int StackCount = 1;
 
-    [Tooltip ("How much Player can carry objects of this type")]
+    [Tooltip ("How much Player can carry objects of this type. If >1 then object is stackable")]
     public int MaxStackCount;
+
+    public bool IsStackable () {
+        return MaxStackCount > 1;
+    }
+
+    public bool Equals (Equipment b) {
+        return b != null && FriendlyName == b.FriendlyName; // TODO make this more explicit
+    }
 }

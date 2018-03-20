@@ -22,7 +22,7 @@ public class Pickable : MonoBehaviour {
     }
 
     public void Pick (int count) {
-        if (equipment.IsStackable) {
+        if (equipment.IsStackable ()) {
             equipment.StackCount -= count;
             if (equipment.StackCount <= 0) {
                 gameObject.SetActive (false);
@@ -35,7 +35,7 @@ public class Pickable : MonoBehaviour {
     public void Drop (Transform dropSpawn, int count) {
         transform.position = dropSpawn.position;
         transform.rotation = dropSpawn.rotation;
-        if (equipment.IsStackable) {
+        if (equipment.IsStackable ()) {
             equipment.StackCount = count;
         }
         gameObject.SetActive (true);

@@ -19,7 +19,23 @@ public class Equipper : MonoBehaviour {
 
     private int activeSlotIdx = 0;
     [SerializeField] private int slotsCount = 6;
-    private Equipment[] slots;
+
+    [System.Serializable]
+    class EquipmentSlot {
+        public Equipment Equipment;
+        public int StackCount = 0;
+        public EquipmentSlot (Equipment equipment, int stackCount) {
+            this.Equipment = equipment;
+            this.StackCount = stackCount;
+        }
+
+        public bool IsEmpty () {
+            return Equipment == null || StackCount == 0;
+        }
+    }
+
+    [SerializeField]
+    private EquipmentSlot[] slots;
 
     [System.Serializable]
     struct BulletSlot {
@@ -31,14 +47,19 @@ public class Equipper : MonoBehaviour {
 
     private void Start () {
         picker = GetComponent<Picker> ();
-        slots = new Equipment[slotsCount];
+        slots = new EquipmentSlot[slotsCount];
     }
 
     private void LateUpdate () {
         if (Input.GetKeyDown (KeyCode.E)) { // TODO
             Pickable pickable = picker.GetHighlightedPickable ();
             if (pickable) {
-                equip (pickable);
+                Equipment pickupEquipment = pickable.GetEquipment ();
+                if (typeof (BulletsPack) == pickupEquipment.GetType ()) {
+                    equipBullets (pickable);
+                } else {
+                    equip (pickable);
+                }
             }
         }
 
@@ -48,36 +69,62 @@ public class Equipper : MonoBehaviour {
     }
 
     private void equip (Pickable pickable) {
-        Equipment equipment = pickable.GetEquipment ();
+        Equipment pickupEquipment = pickable.GetEquipment ();
+        int slotIdx = findEquipSlot (pickupEquipment);
 
-        // equip into bullets slots
-        if (typeof (BulletsPack) == equipment.GetType ()) {
-            BulletsPack bp = equipment as BulletsPack;
-            for (int i = 0; i < bulletsSlots.Length; i++) {
-                BulletSlot slot = bulletsSlots[i];
-                if (slot.SlotType == bp.SlotType) {
-                    if (slot.StackCount < bp.MaxStackCount) { // carry less then can
-                        int d = bp.MaxStackCount - slot.StackCount;
-                        int take = (d > bp.StackCount) ? bp.StackCount : d;
-                        if (take > 0) {
-                            picker.Pick (pickable, take);
-                            bulletsSlots[i].StackCount += take;
-                        }
+        if (!isSlotEmpty (slotIdx)) {
+            bool shouldStack = pickupEquipment.Equals (slots[slotIdx].Equipment) &&
+                slots[slotIdx].Equipment.IsStackable () &&
+                pickupEquipment.IsStackable ();
+
+            if (!shouldStack) {
+                Pickable equippedPickable = slots[slotIdx].Equipment.GetComponent<Pickable> ();
+                OnDrop.Invoke (slotIdx, slots[slotIdx].Equipment);
+                picker.Drop (equippedPickable, slots[slotIdx].StackCount);
+                slots[slotIdx] = null;
+            } else {
+                slots[slotIdx].StackCount += pickupEquipment.StackCount;
+            }
+        }
+
+        if (isSlotEmpty (slotIdx)) {
+            slots[slotIdx] = new EquipmentSlot (pickupEquipment, pickupEquipment.StackCount);
+        }
+        picker.Pick (pickable, pickupEquipment.StackCount);
+        OnEquip.Invoke (slotIdx, pickupEquipment);
+    }
+
+    private bool isSlotEmpty (int slotIdx) {
+        return slots[slotIdx] == null || slots[slotIdx].IsEmpty ();
+    }
+
+    private void equipBullets (Pickable pickable) {
+        BulletsPack bp = pickable.GetEquipment () as BulletsPack;
+        for (int i = 0; i < bulletsSlots.Length; i++) {
+            BulletSlot slot = bulletsSlots[i];
+            if (slot.SlotType == bp.SlotType) {
+                if (slot.StackCount < bp.MaxStackCount) { // carry less then can
+                    int d = bp.MaxStackCount - slot.StackCount;
+                    int take = (d > bp.StackCount) ? bp.StackCount : d;
+                    if (take > 0) {
+                        picker.Pick (pickable, take);
+                        bulletsSlots[i].StackCount += take;
                     }
                 }
             }
-            return;
         }
+    }
 
-        if (slots[activeSlotIdx] != null) {
-            Pickable prevPickable = slots[activeSlotIdx].GetComponent<Pickable> ();
-            OnDrop.Invoke (activeSlotIdx, slots[activeSlotIdx]);
-            picker.Drop (prevPickable, equipment.StackCount);
-            slots[activeSlotIdx] = null;
+    private int findEquipSlot (Equipment pickupEquipment) {
+        int equipSlotIdx = activeSlotIdx;
+        if (pickupEquipment.IsStackable ()) {
+            for (int i = 0; i < slots.Length; i++) {
+                if (slots[i] != null && !slots[i].IsEmpty () && pickupEquipment.Equals (slots[i].Equipment)) {
+                    return i;
+                }
+            }
         }
-        slots[activeSlotIdx] = equipment;
-        picker.Pick (pickable, equipment.StackCount);
-        OnEquip.Invoke (activeSlotIdx, equipment);
+        return equipSlotIdx;
     }
 
     private void activateSlot (int idx) {

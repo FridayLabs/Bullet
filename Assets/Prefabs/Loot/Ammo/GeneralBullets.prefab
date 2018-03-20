@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891644617946862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.132674, y: 0.30297703, z: 0}
+  m_LocalPosition: {x: 12.22, y: 0.86000025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyName: General bullets
-  Sprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  UISprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   IsStackable: 1
   StackCount: 30
   MaxStackCount: 50

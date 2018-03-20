@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FriendlyName: Assault Rifle
-  Sprite: {fileID: 21300078, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
-  Stackable: 0
+  UISprite: {fileID: 21300078, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  StackCount: 1
+  MaxStackCount: 1
   ProjectilePrefab: {fileID: 0}
   BulletVelocity: 25
   BulletRange: 6
