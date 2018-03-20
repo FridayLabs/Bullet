@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 
 public class Weapon : Equipment {
-    [Space (10)]
-    public GameObject ProjectilePrefab;
-
     [Range (10, 100)]
-    public float BulletVelocity = 25f;
+    public float ProjectileVelocity = 25f;
 
     [Range (3, 50)]
-    public float BulletRange = 6f;
+    public float ProjectileRange = 6f;
 
     [Space (10)]
     [Range (0, 10)]
-    public float AimRange = 6f;
+    public float DefaultOverviewRange = 6f;
 
     [Range (10, 50)]
-    public float LongAimRange = 10f;
+    public float AimOverviewRange = 10f;
+
+    public bool ShouldReload = true;
 
     [Space (10)]
+    [Tooltip ("Used when Should Reload is true")]
     public int MagazineCount = 7;
 
     [Space (10)]
-    public float ShootCooldown = 1f;
+    public float AttackCooldown = 1f;
 }

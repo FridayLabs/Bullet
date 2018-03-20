@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 [RequireComponent (typeof (Equipment))]
 public class Pickable : MonoBehaviour {
+    public bool AutoPickup = false;
+
+    public AudioClip PickupSound;
+
     private Equipment equipment;
 
     public UnityEvent OnHighlight, OnDehighlight;

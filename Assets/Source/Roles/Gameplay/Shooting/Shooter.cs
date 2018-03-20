@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent (typeof (WeaponOwner))]
+// [RequireComponent (typeof (WeaponOwner))]
 [RequireComponent (typeof (Aimer))]
 public class Shooter : MonoBehaviour {
     public Transform BulletSpawn;
