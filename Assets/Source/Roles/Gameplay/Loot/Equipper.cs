@@ -66,6 +66,10 @@ public class Equipper : MonoBehaviour {
         if (Input.GetKeyDown (KeyCode.Q)) { // TODO next active slot
             activateSlot ((activeSlotIdx + 1) % slotsCount);
         }
+
+        if (Input.GetKeyDown (KeyCode.G)) { // TODO Drop
+            drop (activeSlotIdx);
+        }
     }
 
     private void equip (Pickable pickable) {
@@ -78,10 +82,7 @@ public class Equipper : MonoBehaviour {
                 pickupEquipment.IsStackable ();
 
             if (!shouldStack) {
-                Pickable equippedPickable = slots[slotIdx].Equipment.GetComponent<Pickable> ();
-                OnDrop.Invoke (slotIdx, slots[slotIdx].Equipment);
-                picker.Drop (equippedPickable, slots[slotIdx].StackCount);
-                slots[slotIdx] = null;
+                drop (slotIdx);
             } else {
                 slots[slotIdx].StackCount += pickupEquipment.StackCount;
             }
@@ -92,10 +93,6 @@ public class Equipper : MonoBehaviour {
         }
         picker.Pick (pickable, pickupEquipment.StackCount);
         OnEquip.Invoke (slotIdx, pickupEquipment);
-    }
-
-    private bool isSlotEmpty (int slotIdx) {
-        return slots[slotIdx] == null || slots[slotIdx].IsEmpty ();
     }
 
     private void equipBullets (Pickable pickable) {
@@ -117,6 +114,21 @@ public class Equipper : MonoBehaviour {
             picker.Pick (pickable, take);
             bulletsSlots[i].StackCount += take;
         }
+    }
+
+    private void drop (int slotIdx) {
+        if (isSlotEmpty (slotIdx)) {
+            return;
+        }
+        EquipmentSlot slot = slots[slotIdx];
+
+        OnDrop.Invoke (slotIdx, slot.Equipment);
+        picker.Drop (slot.Equipment.GetComponent<Pickable> (), slot.StackCount);
+        slots[slotIdx] = null;
+    }
+
+    private bool isSlotEmpty (int slotIdx) {
+        return slots[slotIdx] == null || slots[slotIdx].IsEmpty ();
     }
 
     private int findEquipSlot (Equipment pickupEquipment) {
