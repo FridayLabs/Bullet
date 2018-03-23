@@ -18194,7 +18194,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4206323125338318, guid: 4c8e48db932cb41cc91b032d09691504, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.86
+      value: 0.634
       objectReference: {fileID: 0}
     - target: {fileID: 114112700599025632, guid: 4c8e48db932cb41cc91b032d09691504,
         type: 2}
@@ -18206,6 +18206,25 @@ Prefab:
         type: 2}
       propertyPath: ProjectileInitVelocity
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206323125338318, guid: 4c8e48db932cb41cc91b032d09691504, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 114112700599025632, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateSpread
+      objectReference: {fileID: 0}
+    - target: {fileID: 114112700599025632, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114112700599025632, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c8e48db932cb41cc91b032d09691504, type: 2}

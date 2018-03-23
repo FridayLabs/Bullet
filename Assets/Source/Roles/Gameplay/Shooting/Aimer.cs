@@ -17,8 +17,8 @@ public class Aimer : MonoBehaviour {
     private Equipper equipper;
     private Walker walker;
 
-    private float dispersion = 0f;
-    private float lastDispersionChange = 0f;
+    private float spread = 0f;
+    private float lastSpreadChange = 0f;
 
     public void UpdateCrosshair () {
         Weapon weapon = equipper.GetActiveWeapon ();
@@ -27,25 +27,25 @@ public class Aimer : MonoBehaviour {
         }
     }
 
-    public void UpdateDispersion (Weapon weapon) {
-        float modifier = currentAimMode == AimMode.Default ? weapon.DispersionPerShoot : weapon.AimDispersionPerShoot;
+    public void UpdateSpread (Weapon weapon) {
+        float modifier = currentAimMode == AimMode.Default ? weapon.SpreadPerShoot : weapon.AimSpreadPerShoot;
         if (walker && walker.IsWalking ()) {
-            modifier += weapon.DispersionOnMovePerShoot;
+            modifier += weapon.SpreadOnMovePerShoot;
         }
         // if (walker && walker.IsWalking ()) { // TODO crouch
         //     modifier += weapon.DispersionOnMovePerShoot;
         // }
-        if (weapon.MaximumDispersion > dispersion) {
-            changeDispersion (modifier);
+        if (weapon.MaximumSpread > spread) {
+            changeSpread (modifier);
         }
     }
 
     public Vector2 GetAimVector () {
         int sign = Random.Range (-10, 10) > 0 ? 1 : -1;
 
-        Vector2 forward = transform.right.normalized;
+        Vector2 forward = transform.right.normalized * 20;
 
-        float angle = Mathf.Deg2Rad * sign * Random.Range (0, dispersion);
+        float angle = Mathf.Deg2Rad * sign * Random.Range (0, spread / 2);
         Vector2 opposite = transform.up.normalized * forward.magnitude * Mathf.Tan (angle);
         return (forward + opposite).normalized;
     }
@@ -66,16 +66,16 @@ public class Aimer : MonoBehaviour {
         }
 
         if (weapon) {
-            restoreDispersion (weapon);
+            restoreSpread (weapon);
         }
     }
 
-    private void restoreDispersion (Weapon weapon) {
-        if (dispersion > 0 && Time.time - lastDispersionChange >= weapon.DispersionRestoreDelay) {
-            changeDispersion (-weapon.DispersionRestoreSpeed * Time.deltaTime, false);
+    private void restoreSpread (Weapon weapon) {
+        if (spread > 0 && Time.time - lastSpreadChange >= weapon.SpreadRestoreDelay) {
+            changeSpread (-weapon.SpreadRestoreSpeed * Time.deltaTime, false);
         }
-        if (dispersion < 0) {
-            dispersion = 0;
+        if (spread < 0) {
+            spread = 0;
         }
     }
 
@@ -92,10 +92,10 @@ public class Aimer : MonoBehaviour {
         }
     }
 
-    private void changeDispersion (float modifier, bool affectTimer = true) {
-        dispersion += modifier;
+    private void changeSpread (float modifier, bool affectTimer = true) {
+        spread += modifier;
         if (affectTimer) {
-            lastDispersionChange = Time.time;
+            lastSpreadChange = Time.time;
         }
     }
 }

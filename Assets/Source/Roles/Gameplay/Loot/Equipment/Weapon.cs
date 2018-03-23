@@ -14,31 +14,31 @@ public class Weapon : Equipment {
     [Space (3)]
 
     [Range (0, 50)]
-    public float MaximumDispersion = 10f;
+    public float MaximumSpread = 10f;
 
     [Space (3)]
 
     [Range (0, 5)]
-    public float DispersionPerShoot = 1f;
+    public float SpreadPerShoot = 1f;
 
     [Range (0, 5)]
-    public float AimDispersionPerShoot = 1f;
+    public float AimSpreadPerShoot = 1f;
 
     [Space (3)]
 
     [Range (0, 5)]
-    public float DispersionOnMovePerShoot = 1f;
+    public float SpreadOnMovePerShoot = 1f;
 
     [Range (0, 5)]
-    public float DispersionOnSeatPerShoot = 1f;
+    public float SpreadOnSeatPerShoot = 1f;
 
     [Space (3)]
 
     [Range (0, 5)]
-    public float DispersionRestoreSpeed = 1f;
+    public float SpreadRestoreSpeed = 1f;
 
     [Range (0, 5)]
-    public float DispersionRestoreDelay = 1f;
+    public float SpreadRestoreDelay = 1f;
 
     [Header ("Atacking")]
 
