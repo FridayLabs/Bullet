@@ -79,6 +79,14 @@ public class Equipper : MonoBehaviour {
         return !isSlotEmpty (slots, activeSlotIdx) ? slots[activeSlotIdx].Equipment : DefaultEquipment;
     }
 
+    public Weapon GetActiveWeapon () {
+        Equipment equipment = GetActiveEquipment ();
+        if (equipment.GetType () == typeof (Weapon)) {
+            return equipment as Weapon;
+        }
+        return null;
+    }
+
     public bool CanCarryMoreOf (Equipment equipment) {
         if (equipment.ShouldBeStoredInTypedSlots) {
             int slotIdx = findTypedEquipSlot (typedSlots, equipment);
@@ -142,7 +150,6 @@ public class Equipper : MonoBehaviour {
                 dropFrom (slots, slotIdx);
             }
         }
-
         if (isSlotEmpty (slots, slotIdx)) {
             EquipmentSlot slot = new EquipmentSlot (pickupEquipment, pickupEquipment.StackCount);
             slots[slotIdx] = slot;
@@ -167,11 +174,11 @@ public class Equipper : MonoBehaviour {
             return;
         }
         EquipmentSlot slot = slots[slotIdx];
-
-        OnDrop.Invoke (slotIdx, slot.Equipment);
-        picker.Drop (slot.Equipment.GetComponent<Pickable> (), slot.StackCount);
+        Equipment equipment = slots[slotIdx].Equipment;
         slots[slotIdx].Equipment = null;
         slots[slotIdx].StackCount = 0;
+        OnDrop.Invoke (slotIdx, equipment);
+        picker.Drop (equipment.GetComponent<Pickable> (), slot.StackCount);
     }
 
     private bool isSlotEmpty (List<EquipmentSlot> slots, int slotIdx) {

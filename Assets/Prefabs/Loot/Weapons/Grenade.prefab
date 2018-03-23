@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 212885624574650060}
   - component: {fileID: 114669338093691274}
   - component: {fileID: 114500337584262462}
-  - component: {fileID: 114326683215350640}
+  - component: {fileID: 114364495397185206}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1244789947147982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.72, y: 0.51, z: 0}
+  m_LocalPosition: {x: 12.22, y: 4.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ PolygonCollider2D:
       - {x: 0.07, y: -0.16499999}
       - {x: 0.049999997, y: -0.044999998}
       - {x: 0.28, y: -0.005}
---- !u!114 &114326683215350640
+--- !u!114 &114364495397185206
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -87,14 +87,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1244789947147982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc4beddd7695f4c8daaafb8b3bccdf46, type: 3}
+  m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShouldBeStoredInTypedSlots: 0
+  StackCount: 1
+  MaxStackCount: 51
   FriendlyName: Grenade
   UISprite: {fileID: 21300068, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
-  IsStackable: 1
-  StackCount: 1
-  MaxStackCount: 5
+  Crosshair: {fileID: 0}
+  DefaultOverviewRange: 6
+  AimOverviewRange: 7
+  MaximumDispersion: 10
+  DispersionPerShoot: 1
+  AimDispersionPerShoot: 1
+  DispersionOnMove: 1
+  DispersionOnSeat: 1
+  DispersionRestoreSpeed: 1
+  DispersionRestoreDelay: 1
+  ReloadTimeMs: 25
+  AttackCooldownMs: 500
+  ProjectileInitVelocity: 25
+  ProjectileRange: 6
+  ProjectileCountPerShoot: 1
+  DamagePerProjectile: 20
+  MagazineCount: 1
+  MeleeAttackRadius: 1
 --- !u!114 &114500337584262462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,6 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775907f732678444b90c37ca5f5bc20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoPickup: 0
+  PickupSound: {fileID: 8300000, guid: f9637412b2ab54994a4c6e041500487b, type: 3}
+  DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
   OnHighlight:
     m_PersistentCalls:
       m_Calls:

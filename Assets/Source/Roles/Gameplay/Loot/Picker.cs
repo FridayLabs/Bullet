@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent (typeof (AudioSource))]
 public class Picker : MonoBehaviour {
 
     [System.Serializable]
@@ -13,6 +14,12 @@ public class Picker : MonoBehaviour {
 
     private readonly List<GameObject> currentPickables = new List<GameObject> ();
     private GameObject currentClosestPickup;
+
+    private AudioSource audioSource;
+
+    private void Start () {
+        audioSource = GetComponent<AudioSource> ();
+    }
 
     public void OnPickupEnter (Collider2D other) {
         Pickable pickable = other.GetComponent<Pickable> ();
@@ -33,11 +40,13 @@ public class Picker : MonoBehaviour {
 
     public void Pick (Pickable pickable, int count) {
         pickable.Pick (count);
+        audioSource.PlayOneShot (pickable.PickupSound);
         updateHighlight (true);
     }
 
     public void Drop (Pickable pickable, int count) {
         pickable.Drop (DropSpawn, count);
+        audioSource.PlayOneShot (pickable.DropSound);
         updateHighlight (true);
     }
 

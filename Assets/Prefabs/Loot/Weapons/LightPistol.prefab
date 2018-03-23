@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775907f732678444b90c37ca5f5bc20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoPickup: 0
+  PickupSound: {fileID: 8300000, guid: f9637412b2ab54994a4c6e041500487b, type: 3}
+  DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
   OnHighlight:
     m_PersistentCalls:
       m_Calls:
@@ -150,17 +153,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FriendlyName: Light Pistol
-  UISprite: {fileID: 21300072, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  ShouldBeStoredInTypedSlots: 0
   StackCount: 1
   MaxStackCount: 1
-  ProjectilePrefab: {fileID: 0}
-  BulletVelocity: 25
-  BulletRange: 6
-  AimRange: 6
-  LongAimRange: 10
+  FriendlyName: Light Pistol
+  UISprite: {fileID: 21300072, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
+  DefaultOverviewRange: 6
+  AimOverviewRange: 10
+  MaximumDispersion: 10
+  DispersionPerShoot: 1
+  AimDispersionPerShoot: 1
+  DispersionOnMove: 1
+  DispersionOnSeat: 1
+  DispersionRestoreSpeed: 1
+  DispersionRestoreDelay: 1
+  ReloadTimeMs: 25
+  AttackCooldownMs: 500
+  ProjectileInitVelocity: 25
+  ProjectileRange: 6
+  ProjectileCountPerShoot: 1
+  DamagePerProjectile: 20
   MagazineCount: 7
-  ShootCooldown: 1
+  MeleeAttackRadius: 1
 --- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1

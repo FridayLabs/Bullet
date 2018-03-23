@@ -9,7 +9,6 @@ public class ObjectPooler : MonoBehaviour {
         public int Size;
     }
 
-    public Transform ParentObject;
     public List<Pool> pools;
     public Dictionary<GameObject, Queue<GameObject>> poolDictionary;
 
@@ -20,7 +19,6 @@ public class ObjectPooler : MonoBehaviour {
             for (int i = 0; i <= pool.Size; i++) {
                 GameObject go = Instantiate (pool.Prefab);
                 go.SetActive (false);
-                go.transform.SetParent (ParentObject);
                 objectPool.Enqueue (go);
             }
             poolDictionary.Add (pool.Prefab, objectPool);

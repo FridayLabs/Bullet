@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891644617946862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.22, y: 0.86000025, z: 0}
+  m_LocalPosition: {x: 12.22, y: 3.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,11 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4beddd7695f4c8daaafb8b3bccdf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FriendlyName: General Bullets
-  UISprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   ShouldBeStoredInTypedSlots: 1
   StackCount: 30
   MaxStackCount: 50
+  FriendlyName: General Bullets
+  UISprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
 --- !u!114 &114987754097340724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoPickup: 1
-  PickupSound: {fileID: 0}
+  PickupSound: {fileID: 8300000, guid: 624963d898bbe47298d32bc92c08b53c, type: 3}
+  DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
   OnHighlight:
     m_PersistentCalls:
       m_Calls:

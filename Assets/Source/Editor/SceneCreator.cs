@@ -12,17 +12,16 @@ public class SceneCreator {
     }
 
     private static void CreateScene (Scene scene, NewSceneSetup setup, NewSceneMode mode) {
+        GameObject camera = scene.GetRootGameObjects () [0];
 
-        var camera = scene.GetRootGameObjects () [0];
+        Transform worldGO = new GameObject ("[WORLD]").transform;
 
-        GameObject setupObj = new GameObject ("[SETUP]");
-        setupObj.AddComponent<ObjectPooler> ();
+        new GameObject ("[STATIC]").transform.transform.SetParent (worldGO);
 
-        var worldGO = new GameObject ("[WORLD]").transform;
+        Transform dynamicGO = new GameObject ("[DYNAMIC]").transform;
+        dynamicGO.SetParent (worldGO);
+        camera.transform.SetParent (dynamicGO);
+
         new GameObject ("[UI]");
-
-        var camerasGO = new GameObject ("Cameras").transform;
-        camerasGO.SetParent (worldGO);
-        camera.transform.SetParent (camerasGO);
     }
 }

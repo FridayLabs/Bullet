@@ -8,6 +8,7 @@ public class Pickable : MonoBehaviour {
     public bool AutoPickup = false;
 
     public AudioClip PickupSound;
+    public AudioClip DropSound;
 
     private Equipment equipment;
 

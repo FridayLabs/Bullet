@@ -16,6 +16,10 @@ public class Walker : MonoBehaviour {
     private bool isWalking = false;
     private float movementModifier = 20f;
 
+    public bool IsWalking () {
+        return isWalking;
+    }
+
     private void Awake () {
         rigidbody = GetComponent<Rigidbody2D> ();
     }
