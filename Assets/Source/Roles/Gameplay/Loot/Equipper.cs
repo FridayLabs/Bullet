@@ -88,12 +88,13 @@ public class Equipper : MonoBehaviour {
     }
 
     public bool CanCarryMoreOf (Equipment equipment) {
+        Pickable pickable = equipment.GetComponent<Pickable> ();
         if (equipment.ShouldBeStoredInTypedSlots) {
             int slotIdx = findTypedEquipSlot (typedSlots, equipment);
-            return calculateStackEquipCount (equipment, typedSlots[slotIdx].StackCount) > 0;
+            return calculateStackEquipCount (pickable, typedSlots[slotIdx].StackCount) > 0;
         } else {
             int slotIdx = findEquipSlot (slots, equipment, activeSlotIdx);
-            return calculateStackEquipCount (equipment, slots[slotIdx].StackCount) > 0;
+            return calculateStackEquipCount (pickable, slots[slotIdx].StackCount) > 0;
         }
     }
 
@@ -110,7 +111,7 @@ public class Equipper : MonoBehaviour {
 
             if (shouldStack) {
                 // stacking
-                int take = calculateStackEquipCount (pickupEquipment, typedSlots[slotIdx].StackCount);
+                int take = calculateStackEquipCount (pickable, typedSlots[slotIdx].StackCount);
                 if (take > 0) {
                     OnEquip.Invoke (slotIdx, pickupEquipment);
                     picker.Pick (pickable, take);
@@ -122,9 +123,9 @@ public class Equipper : MonoBehaviour {
 
         if (typedSlots[slotIdx] == null || typedSlots[slotIdx].IsEmpty ()) {
             typedSlots[slotIdx].Equipment = pickupEquipment;
-            typedSlots[slotIdx].StackCount = pickupEquipment.StackCount;
+            typedSlots[slotIdx].StackCount = pickable.StackCount;
         }
-        picker.Pick (pickable, pickupEquipment.StackCount);
+        picker.Pick (pickable, pickable.StackCount);
         OnEquip.Invoke (slotIdx, pickupEquipment);
     }
 
@@ -139,7 +140,7 @@ public class Equipper : MonoBehaviour {
 
             if (shouldStack) {
                 // stacking
-                int take = calculateStackEquipCount (pickupEquipment, slots[slotIdx].StackCount);
+                int take = calculateStackEquipCount (pickable, slots[slotIdx].StackCount);
                 if (take > 0) {
                     OnEquip.Invoke (slotIdx, pickupEquipment);
                     picker.Pick (pickable, take);
@@ -151,17 +152,18 @@ public class Equipper : MonoBehaviour {
             }
         }
         if (isSlotEmpty (slots, slotIdx)) {
-            EquipmentSlot slot = new EquipmentSlot (pickupEquipment, pickupEquipment.StackCount);
+            EquipmentSlot slot = new EquipmentSlot (pickupEquipment, pickable.StackCount);
             slots[slotIdx] = slot;
         }
-        picker.Pick (pickable, pickupEquipment.StackCount);
+        picker.Pick (pickable, pickable.StackCount);
         OnEquip.Invoke (slotIdx, pickupEquipment);
     }
 
-    protected int calculateStackEquipCount (Equipment equipment, int currentStackCount) {
+    protected int calculateStackEquipCount (Pickable pickable, int currentStackCount) {
+        Equipment equipment = pickable.GetEquipment ();
         if (currentStackCount < equipment.MaxStackCount) {
             int d = equipment.MaxStackCount - currentStackCount;
-            int take = (d > equipment.StackCount) ? equipment.StackCount : d;
+            int take = (d > pickable.StackCount) ? pickable.StackCount : d;
             if (take > 0) {
                 return take;
             }
@@ -175,10 +177,11 @@ public class Equipper : MonoBehaviour {
         }
         EquipmentSlot slot = slots[slotIdx];
         Equipment equipment = slots[slotIdx].Equipment;
+        int stackCount = slots[slotIdx].StackCount;
         slots[slotIdx].Equipment = null;
         slots[slotIdx].StackCount = 0;
         OnDrop.Invoke (slotIdx, equipment);
-        picker.Drop (equipment.GetComponent<Pickable> (), slot.StackCount);
+        picker.Drop (equipment.GetComponent<Pickable> (), stackCount);
     }
 
     private bool isSlotEmpty (List<EquipmentSlot> slots, int slotIdx) {

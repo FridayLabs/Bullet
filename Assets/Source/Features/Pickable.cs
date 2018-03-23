@@ -6,13 +6,12 @@ using UnityEngine.Events;
 [RequireComponent (typeof (Equipment))]
 public class Pickable : MonoBehaviour {
     public bool AutoPickup = false;
-
+    public int StackCount = 1;
     public AudioClip PickupSound;
     public AudioClip DropSound;
+    public UnityEvent OnHighlight, OnDehighlight;
 
     private Equipment equipment;
-
-    public UnityEvent OnHighlight, OnDehighlight;
 
     private void Start () {
         equipment = GetComponent<Equipment> ();
@@ -28,8 +27,8 @@ public class Pickable : MonoBehaviour {
 
     public void Pick (int count) {
         if (equipment.IsStackable ()) {
-            equipment.StackCount -= count;
-            if (equipment.StackCount <= 0) {
+            StackCount -= count;
+            if (StackCount <= 0) {
                 gameObject.SetActive (false);
             }
         } else {
@@ -41,7 +40,7 @@ public class Pickable : MonoBehaviour {
         transform.position = dropSpawn.position;
         transform.rotation = dropSpawn.rotation;
         if (equipment.IsStackable ()) {
-            equipment.StackCount = count;
+            StackCount = count;
         }
         gameObject.SetActive (true);
     }

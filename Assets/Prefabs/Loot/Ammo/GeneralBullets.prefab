@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891644617946862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.22, y: 3.15, z: 0}
+  m_LocalPosition: {x: 12.22, y: 0.86000025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,7 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShouldBeStoredInTypedSlots: 1
-  StackCount: 30
   MaxStackCount: 50
   FriendlyName: General Bullets
   UISprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
@@ -158,6 +157,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  StackCount: 30
 --- !u!212 &212265812008190786
 SpriteRenderer:
   m_ObjectHideFlags: 1
