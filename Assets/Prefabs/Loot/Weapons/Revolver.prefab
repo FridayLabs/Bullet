@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1891644617946862}
+  m_RootGameObject: {fileID: 1435891252465430}
   m_IsPrefabParent: 1
---- !u!1 &1891644617946862
+--- !u!1 &1435891252465430
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4814163286105642}
-  - component: {fileID: 60720042643603704}
-  - component: {fileID: 212265812008190786}
-  - component: {fileID: 114533469026523902}
-  - component: {fileID: 114378227993014546}
-  - component: {fileID: 114633054211598450}
+  - component: {fileID: 4062600558350114}
+  - component: {fileID: 60092031272344380}
+  - component: {fileID: 212897466910195002}
+  - component: {fileID: 114949082470379264}
+  - component: {fileID: 114469655228131312}
+  - component: {fileID: 114956842131184688}
   m_Layer: 0
-  m_Name: AssaultRifle
+  m_Name: Revolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4814163286105642
+--- !u!4 &4062600558350114
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891644617946862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.2, y: -0.07, z: 0}
+  m_GameObject: {fileID: 1435891252465430}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.2, y: -1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60720042643603704
+--- !u!60 &60092031272344380
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891644617946862}
+  m_GameObject: {fileID: 1435891252465430}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -60,7 +60,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.68, y: 0.35}
+    oldSize: {x: 0.36, y: 0.34}
     newSize: {x: 0.82, y: 0.82}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -79,12 +79,12 @@ PolygonCollider2D:
       - {x: 0.07, y: -0.16499999}
       - {x: 0.049999997, y: -0.044999998}
       - {x: 0.28, y: -0.005}
---- !u!114 &114378227993014546
+--- !u!114 &114469655228131312
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891644617946862}
+  m_GameObject: {fileID: 1435891252465430}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
@@ -96,12 +96,12 @@ MonoBehaviour:
   _alphaThreshold: 0.32
   _drawOutside: 1
   _enableInstancing: 0
---- !u!114 &114533469026523902
+--- !u!114 &114949082470379264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891644617946862}
+  m_GameObject: {fileID: 1435891252465430}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 775907f732678444b90c37ca5f5bc20c, type: 3}
@@ -114,7 +114,7 @@ MonoBehaviour:
   OnHighlight:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114378227993014546}
+      - m_Target: {fileID: 114469655228131312}
         m_MethodName: set_OutlineWidth
         m_Mode: 3
         m_Arguments:
@@ -130,7 +130,7 @@ MonoBehaviour:
   OnDehighlight:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114378227993014546}
+      - m_Target: {fileID: 114469655228131312}
         m_MethodName: set_OutlineWidth
         m_Mode: 3
         m_Arguments:
@@ -143,12 +143,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114633054211598450
+--- !u!114 &114956842131184688
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891644617946862}
+  m_GameObject: {fileID: 1435891252465430}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
@@ -156,32 +156,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShouldBeStoredInTypedSlots: 0
   MaxStackCount: 1
-  FriendlyName: Assault Rifle
-  UISprite: {fileID: 21300078, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  FriendlyName: Revolver
+  UISprite: {fileID: 21300076, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
-  DefaultOverviewRange: 5
-  AimOverviewRange: 7.6
-  MaximumSpread: 16
-  SpreadPerShoot: 2.5
-  AimSpreadPerShoot: 1.7
-  SpreadOnMovePerShoot: 3
+  DefaultOverviewRange: 4.2
+  AimOverviewRange: 5.9
+  MaximumSpread: 11
+  SpreadPerShoot: 2
+  AimSpreadPerShoot: 1.2
+  SpreadOnMovePerShoot: 2
   SpreadOnSeatPerShoot: 1
-  SpreadRestoreSpeed: 3.8
-  SpreadRestoreDelay: 1.9
+  SpreadRestoreSpeed: 4.78
+  SpreadRestoreDelay: 0.9
   ReloadTimeMs: 25
   AttackCooldownMs: 500
   ProjectileInitVelocity: 25
   ProjectileRange: 6
   ProjectileCountPerShoot: 1
   DamagePerProjectile: 20
-  MagazineCount: 30
+  MagazineCount: 7
   MeleeAttackRadius: 1
---- !u!212 &212265812008190786
+--- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891644617946862}
+  m_GameObject: {fileID: 1435891252465430}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_SortingLayerID: 1245906921
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300078, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  m_Sprite: {fileID: 21300076, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

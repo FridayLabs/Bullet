@@ -13,31 +13,31 @@ public class Weapon : Equipment {
 
     [Space (3)]
 
-    [Range (0, 50)]
+    [Range (0, 100)]
     public float MaximumSpread = 10f;
 
     [Space (3)]
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     public float SpreadPerShoot = 1f;
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     public float AimSpreadPerShoot = 1f;
 
     [Space (3)]
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     public float SpreadOnMovePerShoot = 1f;
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     public float SpreadOnSeatPerShoot = 1f;
 
     [Space (3)]
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     public float SpreadRestoreSpeed = 1f;
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     public float SpreadRestoreDelay = 1f;
 
     [Header ("Atacking")]

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoPickup: 0
+  StackCount: 1
   PickupSound: {fileID: 8300000, guid: f9637412b2ab54994a4c6e041500487b, type: 3}
   DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
   OnHighlight:
@@ -154,20 +155,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShouldBeStoredInTypedSlots: 0
-  StackCount: 1
   MaxStackCount: 1
   FriendlyName: Light Pistol
   UISprite: {fileID: 21300072, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
-  DefaultOverviewRange: 6
-  AimOverviewRange: 10
-  MaximumDispersion: 10
-  DispersionPerShoot: 1
-  AimDispersionPerShoot: 1
-  DispersionOnMove: 1
-  DispersionOnSeat: 1
-  DispersionRestoreSpeed: 1
-  DispersionRestoreDelay: 1
+  DefaultOverviewRange: 4
+  AimOverviewRange: 5
+  MaximumSpread: 8.4
+  SpreadPerShoot: 1.1
+  AimSpreadPerShoot: 0.9
+  SpreadOnMovePerShoot: 2
+  SpreadOnSeatPerShoot: 0.5
+  SpreadRestoreSpeed: 5.25
+  SpreadRestoreDelay: 0.6
   ReloadTimeMs: 25
   AttackCooldownMs: 500
   ProjectileInitVelocity: 25
