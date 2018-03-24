@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 212265812008190786}
   - component: {fileID: 114378227993014546}
   - component: {fileID: 114987754097340724}
-  - component: {fileID: 114492258858962968}
+  - component: {fileID: 114627654518492224}
   m_Layer: 0
   m_Name: GeneralBullets
   m_TagString: Untagged
@@ -96,7 +96,7 @@ MonoBehaviour:
   _alphaThreshold: 0.32
   _drawOutside: 1
   _enableInstancing: 0
---- !u!114 &114492258858962968
+--- !u!114 &114627654518492224
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,13 +104,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1891644617946862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc4beddd7695f4c8daaafb8b3bccdf46, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c42c417fc7114ce6b163d8e70a688a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotType: Typed
+  BagType: 1
   MaxStackCount: 50
   FriendlyName: General Bullets
   UISprite: {fileID: 21300070, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
+  Projectile: {fileID: 1979208684421380, guid: 14e912b9430d8459497dd391336b4384, type: 2}
 --- !u!114 &114987754097340724
 MonoBehaviour:
   m_ObjectHideFlags: 1

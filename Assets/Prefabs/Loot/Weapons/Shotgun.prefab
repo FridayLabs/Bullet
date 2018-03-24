@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435891252465430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.2, y: -1.43, z: 0}
+  m_LocalPosition: {x: 13.304144, y: -0.64123666, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
+  BagType: 0
   MaxStackCount: 1
   FriendlyName: Shotgun
   UISprite: {fileID: 21300084, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
@@ -172,7 +172,7 @@ MonoBehaviour:
   AttackCooldownMs: 500
   ProjectileInitVelocity: 25
   ProjectileRange: 6
-  ProjectileCountPerShoot: 1
+  ProjectileCountPerShoot: 5
   DamagePerProjectile: 20
   MagazineCount: 7
   MeleeAttackRadius: 1

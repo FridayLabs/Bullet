@@ -7,7 +7,6 @@ using UnityEngine.Events;
 [RequireComponent (typeof (Aimer))]
 public class Shooter : MonoBehaviour {
     public Transform BulletSpawn;
-    public GameObject prefab;
 
     [System.Serializable]
     public class AttackEvent : UnityEvent<Weapon> { }
@@ -26,13 +25,17 @@ public class Shooter : MonoBehaviour {
         if (Input.GetButtonDown ("Fire1")) {
             Weapon weapon = equipper.GetActiveWeapon ();
 
-            var bullet = (GameObject) Instantiate (prefab, BulletSpawn.position, BulletSpawn.rotation);
+            Ammo ammo = equipper.GetActiveAmmo ();
+            if (ammo) {
+                GameObject prefab = ammo.Projectile;
+                for (int i = 0; i < weapon.ProjectileCountPerShoot; i++) {
+                    GameObject projectile = GameContainer.ObjectPooler ().Spawn (prefab, BulletSpawn.position, BulletSpawn.rotation);
+                    projectile.GetComponent<Rigidbody2D> ().velocity = aimer.GetAimVector () * weapon.ProjectileInitVelocity;
+                }
 
-            bullet.GetComponent<Rigidbody2D> ().velocity = aimer.GetAimVector () * weapon.ProjectileInitVelocity;
-            Destroy (bullet, 1f);
+                OnAttack.Invoke (weapon);
 
-            OnAttack.Invoke (weapon);
-
+            }
         }
     }
 }

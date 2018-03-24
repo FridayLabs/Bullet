@@ -23,13 +23,13 @@ public class GameContainer : MonoBehaviour {
         });
     }
 
-    public ObjectPooler ObjectPooler () {
+    public static ObjectPooler ObjectPooler () {
         return singleton<ObjectPooler> (delegate {
-            return GetComponent<ObjectPooler> ();
+            return SetupGameObject ().GetComponent<ObjectPooler> ();
         });
     }
 
-    public Overviewer Overviewer () {
+    public static Overviewer Overviewer () {
         return singleton<Overviewer> (delegate {
             return Camera.main.GetComponent<Overviewer> ();
         });

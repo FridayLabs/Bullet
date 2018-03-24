@@ -7,216 +7,108 @@ using UnityEngine.Events;
 [RequireComponent (typeof (Picker))]
 public class Equipper : MonoBehaviour {
 
+    public List<Bag> Bags = new List<Bag> ();
+
     [System.Serializable]
     public class EquipEvent : UnityEvent<int, Equipment> { }
 
     [System.Serializable]
-    public class ActiveSlotEvent : UnityEvent<int> { }
+    public class ActiveSlotEvent : UnityEvent<Bag, int> { }
 
-    [System.Serializable]
-    class EquipmentSlot {
-        public Equipment Equipment;
-        public int StackCount = 0;
-        public EquipmentSlot (Equipment equipment, int stackCount) {
-            this.Equipment = equipment;
-            this.StackCount = stackCount;
-        }
-
-        public bool IsEmpty () {
-            return Equipment == null || StackCount == 0;
-        }
-    }
-
-    [System.Serializable]
-    class TypedEquipmentSlot : EquipmentSlot {
-        public Equipment Type;
-        public TypedEquipmentSlot (Equipment type, Equipment equipment, int stackCount) : base (equipment, stackCount) {
-            this.Type = type;
-        }
-    }
-
-    public Equipment DefaultEquipment;
-
-    [SerializeField]
-    [ReadOnly]
-    private List<EquipmentSlot> slots = new List<EquipmentSlot> ();
-
-    [SerializeField]
-    private List<TypedEquipmentSlot> typedSlots = new List<TypedEquipmentSlot> ();
+    public Weapon DefaultWeapon;
 
     public EquipEvent OnEquip, OnDrop;
     public ActiveSlotEvent OnChangeActiveSlot;
 
     private Picker picker;
 
-    private int activeSlotIdx = 0;
-
     private void Start () {
         picker = GetComponent<Picker> ();
+
+        foreach (Bag bag in Bags) {
+            bag.SetEquipper (this);
+        }
     }
 
     private void LateUpdate () {
         Pickable pickable = picker.GetHighlightedPickable ();
         if (pickable) {
-            Equipment pickupEquipment = pickable.GetEquipment ();
+            Equipment equipment = pickable.GetEquipment ();
             if (pickable.AutoPickup || Input.GetKeyDown (KeyCode.E)) { // TODO
-                if (pickupEquipment.ShouldBeStoredInTypedSlots ()) {
-                    equipTyped (pickable);
-                } else {
-                    equip (pickable);
-                }
+                findBagByType (equipment.BagType).Add (equipment, pickable.StackCount);
             }
         }
 
-        if (Input.GetKeyDown (KeyCode.Q)) { // TODO next active slot
-            activateSlot ((activeSlotIdx + 1) % slots.Count);
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Q)) {
+            findBagByType (BagType.Ammo).ActivateNextSlot ();
+        }
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Alpha1)) {
+            findBagByType (BagType.Ammo).ActivateSlot (0);
+        }
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Alpha2)) {
+            findBagByType (BagType.Ammo).ActivateSlot (1);
+        }
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Alpha3)) {
+            findBagByType (BagType.Ammo).ActivateSlot (2);
+        }
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Alpha4)) {
+            findBagByType (BagType.Ammo).ActivateSlot (3);
+        }
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Alpha5)) {
+            findBagByType (BagType.Ammo).ActivateSlot (4);
+        }
+        // TODO INPUT MANAGEEEEEEEEEER
+        if (Input.GetKeyDown (KeyCode.Alpha5)) {
+            findBagByType (BagType.Ammo).ActivateSlot (6);
         }
 
         if (Input.GetKeyDown (KeyCode.G)) { // TODO Drop
-            dropFrom (slots, activeSlotIdx);
+            findBagByType (BagType.Default).DropFromActiveSlot ();
         }
     }
 
-    public Equipment GetActiveEquipment () {
-        return !isSlotEmpty (slots, activeSlotIdx) ? slots[activeSlotIdx].Equipment : DefaultEquipment;
+    private Bag findBagByType (BagType type) {
+        foreach (Bag bag in Bags) {
+            if (type == bag.BagType) {
+                return bag;
+            }
+        }
+        throw new Exception ("Player doesn't have bag with type " + type);
     }
 
     public Weapon GetActiveWeapon () {
-        Equipment equipment = GetActiveEquipment ();
-        if (equipment.GetType () == typeof (Weapon)) {
+        Equipment equipment = findBagByType (BagType.Default).GetActiveEquipment ();
+        if (equipment && equipment.GetType () == typeof (Weapon)) {
             return equipment as Weapon;
         }
-        return null;
+        return DefaultWeapon;
+    }
+
+    public Ammo GetActiveAmmo () {
+        return findBagByType (BagType.Ammo).GetActiveEquipment () as Ammo;
     }
 
     public bool CanCarryMoreOf (Equipment equipment) {
-        Pickable pickable = equipment.GetComponent<Pickable> ();
-        if (equipment.ShouldBeStoredInTypedSlots ()) {
-            int slotIdx = findTypedEquipSlot (typedSlots, equipment);
-            return calculateStackEquipCount (pickable, typedSlots[slotIdx].StackCount) > 0;
-        } else {
-            int slotIdx = findEquipSlot (slots, equipment, activeSlotIdx);
-            return calculateStackEquipCount (pickable, slots[slotIdx].StackCount) > 0;
-        }
+        return findBagByType (equipment.BagType).CanCarryMoreOf (equipment);
     }
 
-    private void equipTyped (Pickable pickable) {
-        Equipment pickupEquipment = pickable.GetEquipment ();
-        int slotIdx = findTypedEquipSlot (typedSlots, pickupEquipment);
-        if (slotIdx == -1) {
-            return;
-        }
-        if (typedSlots[slotIdx] != null && !typedSlots[slotIdx].IsEmpty ()) {
-            bool shouldStack = pickupEquipment.Equals (typedSlots[slotIdx].Equipment) &&
-                typedSlots[slotIdx].Equipment.IsStackable () &&
-                pickupEquipment.IsStackable ();
-
-            if (shouldStack) {
-                // stacking
-                int take = calculateStackEquipCount (pickable, typedSlots[slotIdx].StackCount);
-                if (take > 0) {
-                    OnEquip.Invoke (slotIdx, pickupEquipment);
-                    picker.Pick (pickable, take);
-                    typedSlots[slotIdx].StackCount += take;
-                }
-                return;
-            }
-        }
-
-        if (typedSlots[slotIdx] == null || typedSlots[slotIdx].IsEmpty ()) {
-            typedSlots[slotIdx].Equipment = pickupEquipment;
-            typedSlots[slotIdx].StackCount = pickable.StackCount;
-        }
-        picker.Pick (pickable, pickable.StackCount);
-        OnEquip.Invoke (slotIdx, pickupEquipment);
+    public void ProcessEquipEvents (Bag bag, int slotIdx, Equipment equipment, int count) {
+        picker.Pick (equipment.GetComponent<Pickable> (), count);
+        OnEquip.Invoke (slotIdx, equipment);
     }
 
-    private void equip (Pickable pickable) {
-        Equipment pickupEquipment = pickable.GetEquipment ();
-        int slotIdx = findEquipSlot (slots, pickupEquipment, activeSlotIdx);
-
-        if (!isSlotEmpty (slots, slotIdx)) {
-            bool shouldStack = pickupEquipment.Equals (slots[slotIdx].Equipment) &&
-                slots[slotIdx].Equipment.IsStackable () &&
-                pickupEquipment.IsStackable ();
-
-            if (shouldStack) {
-                // stacking
-                int take = calculateStackEquipCount (pickable, slots[slotIdx].StackCount);
-                if (take > 0) {
-                    OnEquip.Invoke (slotIdx, pickupEquipment);
-                    picker.Pick (pickable, take);
-                    slots[slotIdx].StackCount += take;
-                }
-                return;
-            } else {
-                dropFrom (slots, slotIdx);
-            }
-        }
-        if (isSlotEmpty (slots, slotIdx)) {
-            EquipmentSlot slot = new EquipmentSlot (pickupEquipment, pickable.StackCount);
-            slots[slotIdx] = slot;
-        }
-        picker.Pick (pickable, pickable.StackCount);
-        OnEquip.Invoke (slotIdx, pickupEquipment);
-    }
-
-    protected int calculateStackEquipCount (Pickable pickable, int currentStackCount) {
-        Equipment equipment = pickable.GetEquipment ();
-        if (currentStackCount < equipment.MaxStackCount) {
-            int d = equipment.MaxStackCount - currentStackCount;
-            int take = (d > pickable.StackCount) ? pickable.StackCount : d;
-            if (take > 0) {
-                return take;
-            }
-        }
-        return 0;
-    }
-
-    private void dropFrom (List<EquipmentSlot> slots, int slotIdx) {
-        if (isSlotEmpty (slots, slotIdx)) {
-            return;
-        }
-        EquipmentSlot slot = slots[slotIdx];
-        Equipment equipment = slots[slotIdx].Equipment;
-        int stackCount = slots[slotIdx].StackCount;
-        slots[slotIdx].Equipment = null;
-        slots[slotIdx].StackCount = 0;
+    public void ProcessDropEvents (Bag bag, int slotIdx, Equipment equipment, int count) {
         OnDrop.Invoke (slotIdx, equipment);
-        picker.Drop (equipment.GetComponent<Pickable> (), stackCount);
+        picker.Drop (equipment.GetComponent<Pickable> (), count);
     }
 
-    private bool isSlotEmpty (List<EquipmentSlot> slots, int slotIdx) {
-        return slots[slotIdx] == null || slots[slotIdx].IsEmpty ();
-    }
-
-    private int findEquipSlot (List<EquipmentSlot> slots, Equipment pickupEquipment, int defaultSlotIdx) {
-        int equipSlotIdx = defaultSlotIdx;
-        if (pickupEquipment.IsStackable ()) {
-            for (int i = 0; i < slots.Count; i++) {
-                if (slots[i] != null && !slots[i].IsEmpty () && pickupEquipment.Equals (slots[i].Equipment)) {
-                    return i;
-                }
-            }
-        }
-        return equipSlotIdx;
-    }
-
-    private int findTypedEquipSlot (List<TypedEquipmentSlot> slots, Equipment pickupEquipment) {
-        for (int i = 0; i < slots.Count; i++) {
-            if (slots[i].Type && slots[i].Type.Equals (pickupEquipment)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    private void activateSlot (int idx) {
-        if (idx < slots.Count) {
-            activeSlotIdx = idx;
-            OnChangeActiveSlot.Invoke (idx);
-        } else {
-            Debug.LogWarning ("Index " + idx + " is too large for player's slots array");
-        }
+    public void ProcessChangeActiveSlotEvents (Bag bag, int slotIdx) {
+        OnChangeActiveSlot.Invoke (bag, slotIdx);
     }
 }

@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1945654572443270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.773, y: 0.041, z: 0}
+  m_LocalPosition: {x: 0.634, y: 0.018, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4776935950316846}
@@ -379,24 +379,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b925e585fb4543ab9d2f49276b2b30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultEquipment: {fileID: 114562273280939480}
-  slots:
-  - Equipment: {fileID: 0}
-    StackCount: 0
-  - Equipment: {fileID: 0}
-    StackCount: 0
-  - Equipment: {fileID: 0}
-    StackCount: 0
-  - Equipment: {fileID: 0}
-    StackCount: 0
-  - Equipment: {fileID: 0}
-    StackCount: 0
-  - Equipment: {fileID: 0}
-    StackCount: 0
-  typedSlots:
-  - Equipment: {fileID: 0}
-    StackCount: 0
-    Type: {fileID: 114492258858962968, guid: cf37e9443da4a4c07af0e62f70f14ad6, type: 2}
+  Bags:
+  - BagType: 0
+    activeSlotIdx: 0
+    slots:
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+  - BagType: 1
+    activeSlotIdx: 0
+    slots:
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+    - Equipment: {fileID: 0}
+      Count: 0
+  DefaultWeapon: {fileID: 114562273280939480}
   OnEquip:
     m_PersistentCalls:
       m_Calls:
@@ -455,23 +463,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: ChangeActiveSlot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 82366046492260652}
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 5424c7d5b391e483981df80fcdf61f8c,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: ChangeActiveSlot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -506,7 +514,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114990049076195488}
-        m_MethodName: UpdateDispersion
+        m_MethodName: UpdateSpread
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -552,21 +560,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
-  StackCount: 1
+  BagType: 0
   MaxStackCount: 1
   FriendlyName: Hands
   UISprite: {fileID: 0}
   Crosshair: {fileID: 0}
-  DefaultOverviewRange: 6
-  AimOverviewRange: 6
-  MaximumDispersion: 10
-  DispersionPerShoot: 1
-  AimDispersionPerShoot: 1
-  DispersionOnMovePerShoot: 1
-  DispersionOnSeatPerShoot: 1
-  DispersionRestoreSpeed: 1
-  DispersionRestoreDelay: 1
+  DefaultOverviewRange: 4
+  AimOverviewRange: 4.5
+  MaximumSpread: 10
+  SpreadPerShoot: 1
+  AimSpreadPerShoot: 1
+  SpreadOnMovePerShoot: 1
+  SpreadOnSeatPerShoot: 1
+  SpreadRestoreSpeed: 1
+  SpreadRestoreDelay: 1
   ReloadTimeMs: 25
   AttackCooldownMs: 500
   ProjectileInitVelocity: 25
@@ -657,8 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d5039182e14e138a99fbfff59b6551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPitchValue: 1
-  maxPitchValue: 2
+  pitch: {x: 1, y: 2}
 --- !u!114 &114990049076195488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -702,6 +708,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Aimer+WeaponAimEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  currentAimMode: 0
+  spread: 0
 --- !u!212 &212255501304464904
 SpriteRenderer:
   m_ObjectHideFlags: 1

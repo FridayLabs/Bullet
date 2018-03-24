@@ -14,20 +14,23 @@ public class EquipmentSlotsDisplay : MonoBehaviour {
     }
 
     public void Equip (int slotIdx, Equipment equipment) {
-        if (!equipment.ShouldBeStoredInTypedSlots ()) {
+        if (equipment.BagType == BagType.Default) {
             EquipmentSlotDisplay slot = slots[slotIdx];
             slot.ChangeImage (equipment.UISprite);
         }
     }
 
     public void Drop (int slotIdx, Equipment equipment) {
-        if (!equipment.ShouldBeStoredInTypedSlots ()) {
+        if (equipment.BagType == BagType.Default) {
             EquipmentSlotDisplay slot = slots[slotIdx];
             slot.RemoveImage ();
         }
     }
 
-    public void ChangeActiveSlot (int slotIdx) {
+    public void ChangeActiveSlot (Bag bag, int slotIdx) {
+        if (bag.BagType != BagType.Default) {
+            return;
+        }
         EquipmentSlotDisplay currentSlot = slots[currentActiveSlot];
         currentSlot.MarkActive (false);
 
