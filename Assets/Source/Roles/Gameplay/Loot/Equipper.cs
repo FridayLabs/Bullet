@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,6 +38,7 @@ public class Equipper : MonoBehaviour {
     public Equipment DefaultEquipment;
 
     [SerializeField]
+    [ReadOnly]
     private List<EquipmentSlot> slots = new List<EquipmentSlot> ();
 
     [SerializeField]
@@ -58,7 +60,7 @@ public class Equipper : MonoBehaviour {
         if (pickable) {
             Equipment pickupEquipment = pickable.GetEquipment ();
             if (pickable.AutoPickup || Input.GetKeyDown (KeyCode.E)) { // TODO
-                if (pickupEquipment.ShouldBeStoredInTypedSlots) {
+                if (pickupEquipment.ShouldBeStoredInTypedSlots ()) {
                     equipTyped (pickable);
                 } else {
                     equip (pickable);
@@ -89,7 +91,7 @@ public class Equipper : MonoBehaviour {
 
     public bool CanCarryMoreOf (Equipment equipment) {
         Pickable pickable = equipment.GetComponent<Pickable> ();
-        if (equipment.ShouldBeStoredInTypedSlots) {
+        if (equipment.ShouldBeStoredInTypedSlots ()) {
             int slotIdx = findTypedEquipSlot (typedSlots, equipment);
             return calculateStackEquipCount (pickable, typedSlots[slotIdx].StackCount) > 0;
         } else {

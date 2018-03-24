@@ -1,14 +1,11 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 
 public class FootstepsSounder : MonoBehaviour {
 
+    [MinMaxSlider (1f, 3f)]
     [SerializeField]
-    [Range (1f, 3f)]
-    private float minPitchValue = 1f;
-
-    [SerializeField]
-    [Range (1f, 3f)]
-    private float maxPitchValue = 2f;
+    private Vector2 pitch = new Vector2 (1f, 2f);
 
     private AudioSource audioSource;
 
@@ -23,7 +20,7 @@ public class FootstepsSounder : MonoBehaviour {
             if (consistingOfSubstance) {
                 Substance substance = consistingOfSubstance.GetSubstance ();
                 audioSource.clip = substance.FootstepsSound;
-                audioSource.pitch = Random.Range (minPitchValue, maxPitchValue);
+                audioSource.pitch = Random.Range (pitch.x, pitch.y);
                 audioSource.Play ();
             } else {
                 Debug.LogWarning ("Looks like there is no substance on ground " + hit.collider.name);

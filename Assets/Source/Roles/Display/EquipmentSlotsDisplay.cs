@@ -14,14 +14,14 @@ public class EquipmentSlotsDisplay : MonoBehaviour {
     }
 
     public void Equip (int slotIdx, Equipment equipment) {
-        if (!equipment.ShouldBeStoredInTypedSlots) {
+        if (!equipment.ShouldBeStoredInTypedSlots ()) {
             EquipmentSlotDisplay slot = slots[slotIdx];
             slot.ChangeImage (equipment.UISprite);
         }
     }
 
     public void Drop (int slotIdx, Equipment equipment) {
-        if (!equipment.ShouldBeStoredInTypedSlots) {
+        if (!equipment.ShouldBeStoredInTypedSlots ()) {
             EquipmentSlotDisplay slot = slots[slotIdx];
             slot.RemoveImage ();
         }

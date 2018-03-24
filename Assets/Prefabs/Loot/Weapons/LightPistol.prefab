@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435891252465430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.2, y: -1.43, z: 0}
+  m_LocalPosition: {x: 12.2, y: -2.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoPickup: 0
+  StackCount: 1
   PickupSound: {fileID: 8300000, guid: f9637412b2ab54994a4c6e041500487b, type: 3}
   DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
   OnHighlight:
@@ -153,21 +154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
-  StackCount: 1
+  slotType: Default
   MaxStackCount: 1
   FriendlyName: Light Pistol
   UISprite: {fileID: 21300072, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
   DefaultOverviewRange: 6
   AimOverviewRange: 10
-  MaximumDispersion: 10
-  DispersionPerShoot: 1
-  AimDispersionPerShoot: 1
-  DispersionOnMove: 1
-  DispersionOnSeat: 1
-  DispersionRestoreSpeed: 1
-  DispersionRestoreDelay: 1
+  MaximumSpread: 10
+  SpreadPerShoot: 1
+  AimSpreadPerShoot: 1
+  SpreadOnMovePerShoot: 1
+  SpreadOnSeatPerShoot: 1
+  SpreadRestoreSpeed: 1
+  SpreadRestoreDelay: 1
   ReloadTimeMs: 25
   AttackCooldownMs: 500
   ProjectileInitVelocity: 25

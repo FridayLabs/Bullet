@@ -1,22 +1,29 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 
 public class Equipment : MonoBehaviour {
-    [Header ("Equipping")]
-    public bool ShouldBeStoredInTypedSlots = false;
+    [BoxGroup ("Equipping")]
+    [Dropdown ("slotsValues")]
+    public string slotType = "Default";
+    private string[] slotsValues = { "Default", "Typed" };
 
-    // [Tooltip ("Used only when equipment is Stackable")]
-    // public int StackCount = 1;
-
-    [Tooltip ("How much Player can carry objects of this type. If >1 then object is stackable")]
+    [BoxGroup ("Equipping")]
+    [InfoBox ("MaxStackCount: How much Player can carry objects of this type. If >1 then object is stackable", InfoBoxType.Normal, "IsStackable")]
     public int MaxStackCount;
 
-    [Header ("UI")]
+    [BoxGroup ("UI")]
     public string FriendlyName;
 
+    [BoxGroup ("UI")]
+    [ShowAssetPreview]
     public Sprite UISprite;
 
     public bool IsStackable () {
         return MaxStackCount > 1;
+    }
+
+    public bool ShouldBeStoredInTypedSlots () {
+        return slotType == slotsValues[1]; // == Typed
     }
 
     public bool Equals (Equipment b) {
