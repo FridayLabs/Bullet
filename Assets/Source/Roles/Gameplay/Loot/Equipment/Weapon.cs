@@ -13,27 +13,27 @@ public class Weapon : Equipment {
     public float AimOverviewRange = 10f;
     [Space (3)]
 
-    [Range (0, 50)]
+    [Range (0, 100)]
     [BoxGroup ("Aiming")]
     public float MaximumSpread = 10f;
 
     [Space (3)]
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     [BoxGroup ("Aiming")]
     public float SpreadPerShoot = 1f;
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     [BoxGroup ("Aiming")]
     public float AimSpreadPerShoot = 1f;
 
     [Space (3)]
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     [BoxGroup ("Aiming")]
     public float SpreadOnMovePerShoot = 1f;
 
-    [Range (0, 5)]
+    [Range (0, 50)]
     [BoxGroup ("Aiming")]
     public float SpreadOnSeatPerShoot = 1f;
 
