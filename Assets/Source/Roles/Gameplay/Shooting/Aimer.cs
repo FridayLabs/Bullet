@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent (typeof (Equipper))]
@@ -13,10 +14,17 @@ public class Aimer : MonoBehaviour {
         Default,
         Aim
     }
+
+    [SerializeField]
+    [ReadOnly]
     private AimMode currentAimMode;
+
     private Equipper equipper;
     private Walker walker;
+    private Croucher croucher;
 
+    [ReadOnly]
+    [SerializeField]
     private float spread = 0f;
     private float lastSpreadChange = 0f;
 
@@ -32,9 +40,9 @@ public class Aimer : MonoBehaviour {
         if (walker && walker.IsWalking ()) {
             modifier += weapon.SpreadOnMovePerShoot;
         }
-        // if (walker && walker.IsWalking ()) { // TODO crouch
-        //     modifier += weapon.DispersionOnMovePerShoot;
-        // }
+        if (croucher && croucher.IsCrouching ()) {
+            modifier += weapon.SpreadOnSeatPerShoot;
+        }
         if (weapon.MaximumSpread > spread) {
             changeSpread (modifier);
         }
@@ -53,6 +61,7 @@ public class Aimer : MonoBehaviour {
     private void Start () {
         equipper = GetComponent<Equipper> ();
         walker = GetComponent<Walker> ();
+        croucher = GetComponent<Croucher> ();
         changeAimMode (AimMode.Default, true);
         UpdateCrosshair ();
     }
