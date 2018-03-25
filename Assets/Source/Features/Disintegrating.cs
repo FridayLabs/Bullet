@@ -2,15 +2,15 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Disintegrating : MonoBehaviour {
-    [SerializeField]
-    private float DisintegratingDistance;
-
-    private Vector2 startPosition;
 
     [System.Serializable]
     public class DisintegratingEvent : UnityEvent<Vector2, GameObject> { }
 
     public DisintegratingEvent OnDisintegrated;
+
+    private float DisintegratingDistance;
+
+    private Vector2 startPosition;
 
     public void SetDisintegratingDistance (float distance) {
         DisintegratingDistance = distance;

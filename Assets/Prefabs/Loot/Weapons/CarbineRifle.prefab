@@ -173,7 +173,7 @@ MonoBehaviour:
   ProjectileInitVelocity: 25
   ProjectileRange: 6
   ProjectileCountPerShot: 1
-  ProjectileCountPerBurst: 1
+  ProjectileCountPerBurst: 7
   DamagePerProjectile: 20
   AttackRate: 700
   MagazineCount: 7

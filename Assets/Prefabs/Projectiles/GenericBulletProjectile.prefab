@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58559349017330234}
   - component: {fileID: 114393267074300746}
   - component: {fileID: 114224034212452314}
+  - component: {fileID: 114211478688979848}
   m_Layer: 0
   m_Name: GenericBulletProjectile
   m_TagString: Untagged
@@ -79,6 +80,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.22
+--- !u!114 &114211478688979848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979208684421380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e618fb74f414ee1ab56ab1868b0506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114224034212452314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,10 +102,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c5591ce817e4f2db994378406964d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisintegratingDistance: 0
+  DisintegratingDistance: 6
   OnDisintegrated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114211478688979848}
+        m_MethodName: LeaveTrail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: Disintegrating+DisintegratingEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114393267074300746

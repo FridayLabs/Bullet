@@ -41,9 +41,12 @@ public class Shooter : MonoBehaviour {
             isShooting = true;
             return StartCoroutine (weapon.GetAttackType ().Fire (weapon, ammo, delegate {
                 GameObject prefab = ammo.Projectile;
-                prefab.GetComponent<Disintegrating> ().SetDisintegratingDistance (weapon.ProjectileRange);
                 for (int i = 0; i < weapon.ProjectileCountPerShot; i++) {
                     GameObject projectile = GameContainer.ObjectPooler ().Spawn (prefab, BulletSpawn.position, BulletSpawn.rotation);
+                    Disintegrating disintegrating = projectile.GetComponent<Disintegrating> ();
+                    if (disintegrating) {
+                        disintegrating.SetDisintegratingDistance (weapon.ProjectileRange);
+                    }
                     projectile.GetComponent<Rigidbody2D> ().velocity = aimer.GetAimVector () * weapon.ProjectileInitVelocity;
                 }
                 OnAttack.Invoke (weapon);

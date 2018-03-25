@@ -163,19 +163,19 @@ MonoBehaviour:
   AimOverviewRange: 7.6
   DefaultSpread: 0
   MaximumSpread: 16
-  SpreadPerShoot: 2.5
-  AimSpreadPerShoot: 1.7
-  SpreadOnMovePerShoot: 3
-  SpreadOnSeatPerShoot: 1
+  SpreadPerShot: 1
+  AimSpreadPerShot: 1
+  SpreadOnMovePerShot: 1
+  SpreadOnSeatPerShot: 1
   SpreadRestoreSpeed: 3.8
   SpreadRestoreDelay: 1.9
   ReloadTimeMs: 25
   ProjectileInitVelocity: 25
   ProjectileRange: 6
-  ProjectileCountPerShoot: 1
+  ProjectileCountPerShot: 1
   ProjectileCountPerBurst: 3
   DamagePerProjectile: 20
-  AttackRate: 600
+  AttackRate: 300
   MagazineCount: 30
   MeleeAttackRadius: 1
   AttackTypes:
