@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435891252465430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.2, y: -1.43, z: 0}
+  m_LocalPosition: {x: 12.24568, y: -0.64123666, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,28 +154,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
+  BagType: 0
   MaxStackCount: 1
   FriendlyName: Carbine Rifle
   UISprite: {fileID: 21300080, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
   DefaultOverviewRange: 5.2
   AimOverviewRange: 8
+  DefaultSpread: 0
   MaximumSpread: 11
-  SpreadPerShoot: 2.6
-  AimSpreadPerShoot: 2
-  SpreadOnMovePerShoot: 2
-  SpreadOnSeatPerShoot: 1
+  SpreadPerShot: 1
+  AimSpreadPerShot: 1
+  SpreadOnMovePerShot: 1
+  SpreadOnSeatPerShot: 1
   SpreadRestoreSpeed: 2.2
   SpreadRestoreDelay: 1.4
   ReloadTimeMs: 25
-  AttackCooldownMs: 500
   ProjectileInitVelocity: 25
   ProjectileRange: 6
-  ProjectileCountPerShoot: 1
+  ProjectileCountPerShot: 1
+  ProjectileCountPerBurst: 1
   DamagePerProjectile: 20
+  AttackRate: 700
   MagazineCount: 7
   MeleeAttackRadius: 1
+  AttackTypes:
+  - {fileID: 11400000, guid: e0c084d3d531e4491902170ea0b77cc5, type: 2}
+  - {fileID: 11400000, guid: 790d0e7f1d9234c7084a00ed730e6c59, type: 2}
 --- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1

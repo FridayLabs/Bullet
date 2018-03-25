@@ -154,13 +154,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
+  BagType: 0
   MaxStackCount: 1
   FriendlyName: Assault Rifle
   UISprite: {fileID: 21300078, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
   DefaultOverviewRange: 5
   AimOverviewRange: 7.6
+  DefaultSpread: 0
   MaximumSpread: 16
   SpreadPerShoot: 2.5
   AimSpreadPerShoot: 1.7
@@ -169,13 +170,16 @@ MonoBehaviour:
   SpreadRestoreSpeed: 3.8
   SpreadRestoreDelay: 1.9
   ReloadTimeMs: 25
-  AttackCooldownMs: 500
   ProjectileInitVelocity: 25
   ProjectileRange: 6
   ProjectileCountPerShoot: 1
+  ProjectileCountPerBurst: 3
   DamagePerProjectile: 20
+  AttackRate: 600
   MagazineCount: 30
   MeleeAttackRadius: 1
+  AttackTypes:
+  - {fileID: 11400000, guid: 790d0e7f1d9234c7084a00ed730e6c59, type: 2}
 --- !u!212 &212265812008190786
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -45,27 +45,27 @@ public class Equipper : MonoBehaviour {
         }
         // TODO INPUT MANAGEEEEEEEEEER
         if (Input.GetKeyDown (KeyCode.Alpha1)) {
-            findBagByType (BagType.Ammo).ActivateSlot (0);
+            findBagByType (BagType.Default).ActivateSlot (0);
         }
         // TODO INPUT MANAGEEEEEEEEEER
         if (Input.GetKeyDown (KeyCode.Alpha2)) {
-            findBagByType (BagType.Ammo).ActivateSlot (1);
+            findBagByType (BagType.Default).ActivateSlot (1);
         }
         // TODO INPUT MANAGEEEEEEEEEER
         if (Input.GetKeyDown (KeyCode.Alpha3)) {
-            findBagByType (BagType.Ammo).ActivateSlot (2);
+            findBagByType (BagType.Default).ActivateSlot (2);
         }
         // TODO INPUT MANAGEEEEEEEEEER
         if (Input.GetKeyDown (KeyCode.Alpha4)) {
-            findBagByType (BagType.Ammo).ActivateSlot (3);
+            findBagByType (BagType.Default).ActivateSlot (3);
         }
         // TODO INPUT MANAGEEEEEEEEEER
         if (Input.GetKeyDown (KeyCode.Alpha5)) {
-            findBagByType (BagType.Ammo).ActivateSlot (4);
+            findBagByType (BagType.Default).ActivateSlot (4);
         }
         // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha5)) {
-            findBagByType (BagType.Ammo).ActivateSlot (6);
+        if (Input.GetKeyDown (KeyCode.Alpha6)) {
+            findBagByType (BagType.Default).ActivateSlot (5);
         }
 
         if (Input.GetKeyDown (KeyCode.G)) { // TODO Drop

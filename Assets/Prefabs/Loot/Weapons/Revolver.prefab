@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435891252465430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.2, y: -1.43, z: 0}
+  m_LocalPosition: {x: 14.655108, y: -0.072149634, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,13 +154,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
+  BagType: 0
   MaxStackCount: 1
   FriendlyName: Revolver
   UISprite: {fileID: 21300076, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
   DefaultOverviewRange: 4.2
   AimOverviewRange: 5.9
+  DefaultSpread: 0
   MaximumSpread: 11
   SpreadPerShoot: 2
   AimSpreadPerShoot: 1.2
@@ -169,13 +170,14 @@ MonoBehaviour:
   SpreadRestoreSpeed: 4.78
   SpreadRestoreDelay: 0.9
   ReloadTimeMs: 25
-  AttackCooldownMs: 500
   ProjectileInitVelocity: 25
   ProjectileRange: 6
   ProjectileCountPerShoot: 1
   DamagePerProjectile: 20
   MagazineCount: 7
   MeleeAttackRadius: 1
+  AttackTypes:
+  - {fileID: 11400000, guid: 9648bd29eae1049ab9427bc516e8b9ac, type: 2}
 --- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1

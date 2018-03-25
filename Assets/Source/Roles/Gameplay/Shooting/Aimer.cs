@@ -36,12 +36,12 @@ public class Aimer : MonoBehaviour {
     }
 
     public void UpdateSpread (Weapon weapon) {
-        float modifier = currentAimMode == AimMode.Default ? weapon.SpreadPerShoot : weapon.AimSpreadPerShoot;
+        float modifier = currentAimMode == AimMode.Default ? weapon.SpreadPerShot : weapon.AimSpreadPerShot;
         if (walker && walker.IsWalking ()) {
-            modifier += weapon.SpreadOnMovePerShoot;
+            modifier += weapon.SpreadOnMovePerShot;
         }
         if (croucher && croucher.IsCrouching ()) {
-            modifier += weapon.SpreadOnSeatPerShoot;
+            modifier += weapon.SpreadOnSeatPerShot;
         }
         if (weapon.MaximumSpread > spread) {
             changeSpread (modifier);
@@ -63,6 +63,7 @@ public class Aimer : MonoBehaviour {
         walker = GetComponent<Walker> ();
         croucher = GetComponent<Croucher> ();
         changeAimMode (AimMode.Default, true);
+        ResetSpread ();
         UpdateCrosshair ();
     }
 
@@ -79,12 +80,18 @@ public class Aimer : MonoBehaviour {
         }
     }
 
+    public void ResetSpread () {
+        Weapon weapon = equipper.GetActiveWeapon ();
+        spread = weapon ? weapon.DefaultSpread : 0;
+    }
+
     private void restoreSpread (Weapon weapon) {
-        if (spread > 0 && Time.time - lastSpreadChange >= weapon.SpreadRestoreDelay) {
+        float defaultSpread = weapon.DefaultSpread;
+        if (spread > defaultSpread && Time.time - lastSpreadChange >= weapon.SpreadRestoreDelay) {
             changeSpread (-weapon.SpreadRestoreSpeed * Time.deltaTime, false);
         }
-        if (spread < 0) {
-            spread = 0;
+        if (spread < defaultSpread) {
+            spread = defaultSpread;
         }
     }
 

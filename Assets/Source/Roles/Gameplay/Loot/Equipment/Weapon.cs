@@ -1,4 +1,6 @@
-﻿using NaughtyAttributes;
+﻿using System;
+using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Weapon : Equipment {
@@ -15,27 +17,31 @@ public class Weapon : Equipment {
 
     [Range (0, 100)]
     [BoxGroup ("Aiming")]
+    public float DefaultSpread = 0f;
+
+    [Range (0, 100)]
+    [BoxGroup ("Aiming")]
     public float MaximumSpread = 10f;
 
     [Space (3)]
 
     [Range (0, 50)]
     [BoxGroup ("Aiming")]
-    public float SpreadPerShoot = 1f;
+    public float SpreadPerShot = 1f;
 
     [Range (0, 50)]
     [BoxGroup ("Aiming")]
-    public float AimSpreadPerShoot = 1f;
+    public float AimSpreadPerShot = 1f;
 
     [Space (3)]
 
     [Range (0, 50)]
     [BoxGroup ("Aiming")]
-    public float SpreadOnMovePerShoot = 1f;
+    public float SpreadOnMovePerShot = 1f;
 
     [Range (0, 50)]
     [BoxGroup ("Aiming")]
-    public float SpreadOnSeatPerShoot = 1f;
+    public float SpreadOnSeatPerShot = 1f;
 
     [Space (3)]
 
@@ -51,8 +57,6 @@ public class Weapon : Equipment {
 
     [Range (0, 5000)]
     public float ReloadTimeMs = 25f;
-    [BoxGroup ("Atacking")]
-    public float AttackCooldownMs = 500f;
 
     [Space (3)]
     [Range (10, 100)]
@@ -64,15 +68,38 @@ public class Weapon : Equipment {
     public float ProjectileRange = 6f;
 
     [BoxGroup ("Atacking")]
-    public int ProjectileCountPerShoot = 1;
+    [MinValue (1)]
+    public int ProjectileCountPerShot = 1;
 
-    [Range (1, 100)]
     [BoxGroup ("Atacking")]
+    [MinValue (1)]
+    public int ProjectileCountPerBurst = 1;
+
+    [BoxGroup ("Atacking")]
+    [Range (1, 100)]
     public int DamagePerProjectile = 20;
 
     [BoxGroup ("Atacking")]
+    public int AttackRate = 600;
+
+    [BoxGroup ("Atacking")]
+    [MinValue (1)]
     public int MagazineCount = 7;
 
     [BoxGroup ("Atacking")]
+    [Range (1, 100)]
     public float MeleeAttackRadius = 1f;
+
+    [BoxGroup ("Atacking")]
+    [SerializeField]
+    [ReorderableList]
+    private List<AttackType> AttackTypes;
+    private int currentAttackTypeIdx = 0;
+
+    public AttackType GetAttackType () {
+        if (currentAttackTypeIdx > AttackTypes.Count - 1) {
+            throw new Exception (this.FriendlyName + " has no AttackType with idx " + currentAttackTypeIdx);
+        }
+        return AttackTypes[currentAttackTypeIdx];
+    }
 }

@@ -161,6 +161,7 @@ MonoBehaviour:
   Crosshair: {fileID: 2800000, guid: 00b6ef8e9527444949a6db6d2025e94e, type: 3}
   DefaultOverviewRange: 4
   AimOverviewRange: 5.5
+  DefaultSpread: 3
   MaximumSpread: 20
   SpreadPerShoot: 3.3
   AimSpreadPerShoot: 2.5
@@ -169,13 +170,14 @@ MonoBehaviour:
   SpreadRestoreSpeed: 5.4
   SpreadRestoreDelay: 1.2
   ReloadTimeMs: 25
-  AttackCooldownMs: 500
   ProjectileInitVelocity: 25
   ProjectileRange: 6
   ProjectileCountPerShoot: 5
   DamagePerProjectile: 20
   MagazineCount: 7
   MeleeAttackRadius: 1
+  AttackTypes:
+  - {fileID: 11400000, guid: 9648bd29eae1049ab9427bc516e8b9ac, type: 2}
 --- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1
