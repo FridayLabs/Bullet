@@ -23,12 +23,9 @@ public class Attacker : MonoBehaviour {
     [ReadOnly]
     private bool isShooting = false;
 
-    private AudioSource audioSource;
-
     private GameInputManager inputManager;
 
     private void Start () {
-        audioSource = gameObject.AddComponent<AudioSource> ();
         equipper = GetComponent<Equipper> ();
         aimer = GetComponent<Aimer> ();
         inputManager = GameContainer.InputManager ();

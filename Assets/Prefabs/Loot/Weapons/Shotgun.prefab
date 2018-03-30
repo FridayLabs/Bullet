@@ -169,7 +169,7 @@ MonoBehaviour:
   SpreadOnSeatPerShot: 1
   SpreadRestoreSpeed: 5.4
   SpreadRestoreDelay: 1.2
-  AttackSound: {fileID: 0}
+  AttackSound: {fileID: 8300000, guid: 7632636b081554272b285dc3c0b966e5, type: 3}
   MisfireSound: {fileID: 0}
   ProjectileInitVelocity: 25
   ProjectileRange: 6
@@ -184,11 +184,12 @@ MonoBehaviour:
   MeleeAttackRadius: 1
   AttackTypes:
   - {fileID: 11400000, guid: d3b04106e23e44ffc98590a9e564df01, type: 2}
-  ReloadingStartSound: {fileID: 0}
-  ReloadingSound: {fileID: 0}
-  ReloadingFinishSound: {fileID: 0}
+  ReloadingStartSound: {fileID: 8300000, guid: 187c628c9b2344861bfe9eac41acc88c, type: 3}
+  ReloadingSound: {fileID: 8300000, guid: 44a06bb5707a54902b832aba8bc4cfb7, type: 3}
+  ReloadingFinishSound: {fileID: 8300000, guid: 235401a71ff304b1abf75bd804df9cf9,
+    type: 3}
   ReloadType: {fileID: 11400000, guid: e1019ffba36024e04941f771fff3cb34, type: 2}
-  ReloadPerIteration: 1000
+  ReloadPerIteration: 500
 --- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1
