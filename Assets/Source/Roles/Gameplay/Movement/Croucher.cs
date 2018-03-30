@@ -12,7 +12,7 @@ public class Croucher : MonoBehaviour {
     }
 
     private void Update () {
-        if (Input.GetKey (KeyCode.C)) {
+        if (GameContainer.InputManager ().GetKey (ActionCode.Crouch)) {
             if (!isCrouching) {
                 crouch ();
             }

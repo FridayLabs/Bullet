@@ -29,6 +29,12 @@ public class GameContainer : MonoBehaviour {
         });
     }
 
+    public static GameInputManager InputManager () {
+        return singleton<GameInputManager> (delegate {
+            return new GameInputManager ();
+        });
+    }
+
     public static Overviewer Overviewer () {
         return singleton<Overviewer> (delegate {
             return Camera.main.GetComponent<Overviewer> ();

@@ -69,7 +69,7 @@ public class Aimer : MonoBehaviour {
 
     private void Update () {
         Weapon weapon = equipper.GetActiveWeapon ();
-        if (Input.GetMouseButton (1) && weapon) { // TODO
+        if (GameContainer.InputManager ().GetKey (ActionCode.Aim) && weapon) { // TODO
             changeAimMode (AimMode.Aim);
         } else {
             changeAimMode (AimMode.Default);

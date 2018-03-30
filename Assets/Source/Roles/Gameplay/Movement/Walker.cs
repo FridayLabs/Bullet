@@ -15,6 +15,7 @@ public class Walker : MonoBehaviour {
 
     private bool isWalking = false;
     private float movementModifier = 20f;
+    private GameInputManager input;
 
     public bool IsWalking () {
         return isWalking;
@@ -22,11 +23,25 @@ public class Walker : MonoBehaviour {
 
     private void Awake () {
         rigidbody = GetComponent<Rigidbody2D> ();
+        input = GameContainer.InputManager ();
     }
 
     void FixedUpdate () {
-        Vector2 movementVector = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
-        rigidbody.velocity = movementVector.normalized * MoveSpeed * movementModifier * Time.fixedDeltaTime;
+
+        float x = 0;
+        if (input.GetKey (ActionCode.MoveLeft)) {
+            x = -1;
+        } else if (input.GetKey (ActionCode.MoveRight)) {
+            x = 1;
+        }
+
+        float y = 0;
+        if (input.GetKey (ActionCode.MoveUp)) {
+            y = 1;
+        } else if (input.GetKey (ActionCode.MoveDown)) {
+            y = -1;
+        }
+        rigidbody.velocity = new Vector2 (x, y) * MoveSpeed * movementModifier * Time.fixedDeltaTime;
 
         if (!isWalking && rigidbody.velocity != Vector2.zero) {
             WalkAnimator.SetBool ("IsWalking", true);

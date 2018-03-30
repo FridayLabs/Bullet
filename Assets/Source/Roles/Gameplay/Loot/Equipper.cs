@@ -31,44 +31,23 @@ public class Equipper : MonoBehaviour {
     }
 
     private void LateUpdate () {
+        GameInputManager input = GameContainer.InputManager ();
         Pickable pickable = picker.GetHighlightedPickable ();
         if (pickable) {
             Equipment equipment = pickable.GetEquipment ();
-            if (pickable.AutoPickup || Input.GetKeyDown (KeyCode.E)) { // TODO
+            if (pickable.AutoPickup || input.GetKeyDown (ActionCode.Pickup)) {
                 findBagByType (equipment.BagType).Add (equipment, pickable.StackCount);
             }
         }
-
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Q)) {
+        ActionCode action = input.GetSomeKeyDown (ActionCode.ActivateEquipmentSlotActions);
+        if (action != null) {
+            findBagByType (BagType.Default).ActivateSlot ((int) action.Data - 1);
+        }
+        if (input.GetKeyDown (ActionCode.ActivateNextAmmoSlot)) {
             findBagByType (BagType.Ammo).ActivateNextSlot ();
         }
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha1)) {
-            findBagByType (BagType.Default).ActivateSlot (0);
-        }
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha2)) {
-            findBagByType (BagType.Default).ActivateSlot (1);
-        }
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha3)) {
-            findBagByType (BagType.Default).ActivateSlot (2);
-        }
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha4)) {
-            findBagByType (BagType.Default).ActivateSlot (3);
-        }
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha5)) {
-            findBagByType (BagType.Default).ActivateSlot (4);
-        }
-        // TODO INPUT MANAGEEEEEEEEEER
-        if (Input.GetKeyDown (KeyCode.Alpha6)) {
-            findBagByType (BagType.Default).ActivateSlot (5);
-        }
 
-        if (Input.GetKeyDown (KeyCode.G)) { // TODO Drop
+        if (input.GetKeyDown (ActionCode.Drop)) {
             findBagByType (BagType.Default).DropFromActiveSlot ();
         }
     }

@@ -25,7 +25,7 @@ public class Attacker : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetButton ("Fire1")) {
+        if (GameContainer.InputManager ().GetKey (ActionCode.Attack)) {
             if (!isShooting) {
                 shootingProcess = startShooting ();
             }
