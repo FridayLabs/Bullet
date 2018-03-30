@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 [RequireComponent (typeof (Equipper))]
 [RequireComponent (typeof (Aimer))]
-public class Shooter : MonoBehaviour {
+public class Attacker : MonoBehaviour {
     public Transform BulletSpawn;
 
     [System.Serializable]
     public class AttackEvent : UnityEvent<Weapon> { }
 
-    public AttackEvent OnAttack;
+    public AttackEvent OnAttack, OnMisfire;
 
     private Equipper equipper;
     private Aimer aimer;
@@ -29,7 +29,7 @@ public class Shooter : MonoBehaviour {
             if (!isShooting) {
                 shootingProcess = startShooting ();
             }
-        } else if (isShooting) {
+        } else if (isShooting && shootingProcess != null) {
             stopShooting (shootingProcess);
         }
     }

@@ -54,7 +54,12 @@ public class Weapon : Equipment {
     public float SpreadRestoreDelay = 1f;
 
     [BoxGroup ("Atacking")]
+    public AudioClip AttackSound;
 
+    [BoxGroup ("Atacking")]
+    public AudioClip MisfireSound;
+
+    [BoxGroup ("Atacking")]
     [Range (0, 5000)]
     public float ReloadTimeMs = 25f;
 

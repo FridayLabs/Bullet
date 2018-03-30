@@ -163,17 +163,21 @@ MonoBehaviour:
   AimOverviewRange: 5.2
   DefaultSpread: 0
   MaximumSpread: 14
-  SpreadPerShoot: 2.4
-  AimSpreadPerShoot: 1.8
-  SpreadOnMovePerShoot: 3
-  SpreadOnSeatPerShoot: 0.6
+  SpreadPerShot: 1
+  AimSpreadPerShot: 1
+  SpreadOnMovePerShot: 1
+  SpreadOnSeatPerShot: 1
   SpreadRestoreSpeed: 4.37
   SpreadRestoreDelay: 1
+  AttackSound: {fileID: 8300000, guid: ae3178fbdcffe44d2a18ed599fde80de, type: 3}
+  MisfireSound: {fileID: 0}
   ReloadTimeMs: 25
   ProjectileInitVelocity: 25
   ProjectileRange: 6
-  ProjectileCountPerShoot: 1
+  ProjectileCountPerShot: 1
+  ProjectileCountPerBurst: 1
   DamagePerProjectile: 20
+  AttackRate: 600
   MagazineCount: 7
   MeleeAttackRadius: 1
   AttackTypes:
