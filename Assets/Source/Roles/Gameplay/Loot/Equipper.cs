@@ -41,7 +41,7 @@ public class Equipper : MonoBehaviour {
         }
         ActionCode action = input.GetSomeKeyDown (ActionCode.ActivateEquipmentSlotActions);
         if (action != null) {
-            findBagByType (BagType.Default).ActivateSlot ((int) action.Data - 1);
+            findBagByType (BagType.Default).ActivateSlot (((int) action.Data) - 1);
         }
         if (input.GetKeyDown (ActionCode.ActivateNextAmmoSlot)) {
             findBagByType (BagType.Ammo).ActivateNextSlot ();
@@ -71,6 +71,14 @@ public class Equipper : MonoBehaviour {
 
     public Ammo GetActiveAmmo () {
         return findBagByType (BagType.Ammo).GetActiveEquipment () as Ammo;
+    }
+
+    public int GetActiveAmmoCount () {
+        return findBagByType (BagType.Ammo).GetActiveEquipmentCount ();
+    }
+
+    public void SetActiveAmmoCount (int count) {
+        findBagByType (BagType.Ammo).SetActiveEquipmentCount (count);
     }
 
     public bool CanCarryMoreOf (Equipment equipment) {

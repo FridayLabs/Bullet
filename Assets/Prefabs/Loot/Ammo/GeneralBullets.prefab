@@ -125,8 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoPickup: 1
   StackCount: 30
-  PickupSound: {fileID: 8300000, guid: 624963d898bbe47298d32bc92c08b53c, type: 3}
-  DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
+  PickupSound: {fileID: 8300000, guid: e9cdd5712d796460e9981f6eabff3cbf, type: 3}
+  DropSound: {fileID: 8300000, guid: 175c2780b314a4b03a1b9461e674bca1, type: 3}
   OnHighlight:
     m_PersistentCalls:
       m_Calls:

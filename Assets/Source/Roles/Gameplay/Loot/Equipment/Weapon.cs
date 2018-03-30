@@ -59,10 +59,6 @@ public class Weapon : Equipment {
     [BoxGroup ("Atacking")]
     public AudioClip MisfireSound;
 
-    [BoxGroup ("Atacking")]
-    [Range (0, 5000)]
-    public float ReloadTimeMs = 25f;
-
     [Space (3)]
     [Range (10, 100)]
     [BoxGroup ("Atacking")]
@@ -73,11 +69,16 @@ public class Weapon : Equipment {
     public float ProjectileRange = 6f;
 
     [BoxGroup ("Atacking")]
+    public bool Buckshot = false;
+
+    [BoxGroup ("Atacking")]
+    [ShowIf ("Buckshot")]
     [MinValue (1)]
     public int ProjectileCountPerShot = 1;
 
     [BoxGroup ("Atacking")]
     [MinValue (1)]
+    [ShowIf ("hasBurstedAttack")]
     public int ProjectileCountPerBurst = 1;
 
     [BoxGroup ("Atacking")]
@@ -92,6 +93,14 @@ public class Weapon : Equipment {
     public int MagazineCount = 7;
 
     [BoxGroup ("Atacking")]
+    [ReadOnly]
+    public Ammo CurrentAmmoType;
+
+    [BoxGroup ("Atacking")]
+    [ReadOnly]
+    public int CurrentAmmoCount;
+
+    [BoxGroup ("Atacking")]
     [Range (1, 100)]
     public float MeleeAttackRadius = 1f;
 
@@ -101,10 +110,30 @@ public class Weapon : Equipment {
     private List<AttackType> AttackTypes;
     private int currentAttackTypeIdx = 0;
 
+    [BoxGroup ("Reloading")]
+    public AudioClip ReloadingStartSound;
+
+    [BoxGroup ("Reloading")]
+    public AudioClip ReloadingSound;
+
+    [BoxGroup ("Reloading")]
+    public AudioClip ReloadingFinishSound;
+
+    [BoxGroup ("Reloading")]
+    public ReloadType ReloadType;
+
+    [BoxGroup ("Reloading")]
+    [Range (0, 5000)]
+    public float ReloadPerIteration = 250f;
+
     public AttackType GetAttackType () {
         if (currentAttackTypeIdx > AttackTypes.Count - 1) {
             throw new Exception (this.FriendlyName + " has no AttackType with idx " + currentAttackTypeIdx);
         }
         return AttackTypes[currentAttackTypeIdx];
+    }
+
+    private bool hasBurstedAttack () {
+        return AttackTypes.FindIndex ((AttackType x) => x.BurstedFire == true) != -1;
     }
 }

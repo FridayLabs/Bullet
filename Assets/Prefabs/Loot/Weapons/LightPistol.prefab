@@ -109,8 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoPickup: 0
   StackCount: 1
-  PickupSound: {fileID: 8300000, guid: f9637412b2ab54994a4c6e041500487b, type: 3}
-  DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
+  PickupSound: {fileID: 8300000, guid: e9cdd5712d796460e9981f6eabff3cbf, type: 3}
+  DropSound: {fileID: 8300000, guid: 175c2780b314a4b03a1b9461e674bca1, type: 3}
   OnHighlight:
     m_PersistentCalls:
       m_Calls:
@@ -163,21 +163,33 @@ MonoBehaviour:
   AimOverviewRange: 5
   DefaultSpread: 0
   MaximumSpread: 8.4
-  SpreadPerShoot: 1.1
-  AimSpreadPerShoot: 0.9
-  SpreadOnMovePerShoot: 2
-  SpreadOnSeatPerShoot: 0.5
+  SpreadPerShot: 1
+  AimSpreadPerShot: 1
+  SpreadOnMovePerShot: 1
+  SpreadOnSeatPerShot: 1
   SpreadRestoreSpeed: 5.25
   SpreadRestoreDelay: 0.6
-  ReloadTimeMs: 25
+  AttackSound: {fileID: 8300000, guid: 1906ad876650546b9b265230d99680b3, type: 3}
+  MisfireSound: {fileID: 8300000, guid: 0b243dc7fc403496697d4f93383f97f9, type: 3}
   ProjectileInitVelocity: 25
   ProjectileRange: 6
-  ProjectileCountPerShoot: 1
+  Buckshot: 0
+  ProjectileCountPerShot: 1
+  ProjectileCountPerBurst: 1
   DamagePerProjectile: 20
+  AttackRate: 600
   MagazineCount: 7
+  CurrentAmmoType: {fileID: 0}
+  CurrentAmmoCount: 0
   MeleeAttackRadius: 1
   AttackTypes:
-  - {fileID: 11400000, guid: 9648bd29eae1049ab9427bc516e8b9ac, type: 2}
+  - {fileID: 11400000, guid: d3b04106e23e44ffc98590a9e564df01, type: 2}
+  ReloadingStartSound: {fileID: 8300000, guid: 87d49e633c4314cf0b85297a883ee31b, type: 3}
+  ReloadingSound: {fileID: 8300000, guid: 786c2d1e8b0414b4c86a68a1149c15c4, type: 3}
+  ReloadingFinishSound: {fileID: 8300000, guid: fd54f1799711b453b9df021b83d5fe35,
+    type: 3}
+  ReloadType: {fileID: 11400000, guid: cf32c093dc732481bac98cab72719b7a, type: 2}
+  ReloadPerIteration: 600
 --- !u!212 &212897466910195002
 SpriteRenderer:
   m_ObjectHideFlags: 1

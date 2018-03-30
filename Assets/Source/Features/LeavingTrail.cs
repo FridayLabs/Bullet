@@ -7,9 +7,8 @@ public class LeavingTrail : MonoBehaviour {
             ConsistingOfSubstance consistingOfSubstance = hit.collider.GetComponent<ConsistingOfSubstance> ();
             if (consistingOfSubstance) {
                 Substance substance = consistingOfSubstance.GetSubstance ();
-
-                Debug.Log ("Playing effect of hitting " + substance);
-                Debug.Log ("Leaving trail on " + hit.collider.name);
+                // Debug.Log ("Playing effect of hitting " + substance);
+                // Debug.Log ("Leaving trail on " + hit.collider.name);
             }
         }
     }

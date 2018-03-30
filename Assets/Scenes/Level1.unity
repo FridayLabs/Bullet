@@ -17125,6 +17125,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1488484220}
     m_Modifications:
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4776935950316846, guid: 4c8e48db932cb41cc91b032d09691504, type: 2}
       propertyPath: m_LocalPosition.x
       value: 8.91
@@ -17157,6 +17167,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114990049076195488, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAimStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 387639704}
+    - target: {fileID: 114990049076195488, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAimStop.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 387639704}
+    - target: {fileID: 114686450392632880, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnPickupHighlightChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1966050553}
     - target: {fileID: 114044561108567620, guid: 4c8e48db932cb41cc91b032d09691504,
         type: 2}
       propertyPath: OnEquip.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -17172,22 +17197,98 @@ Prefab:
       propertyPath: OnChangeActiveSlot.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 724706462}
-    - target: {fileID: 114686450392632880, guid: 4c8e48db932cb41cc91b032d09691504,
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
         type: 2}
-      propertyPath: OnPickupHighlightChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1966050553}
-    - target: {fileID: 114990049076195488, guid: 4c8e48db932cb41cc91b032d09691504,
+      objectReference: {fileID: 1435713135}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
         type: 2}
-      propertyPath: OnAimStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 387639704}
-    - target: {fileID: 114990049076195488, guid: 4c8e48db932cb41cc91b032d09691504,
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateSpread
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
         type: 2}
-      propertyPath: OnAimStop.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 387639704}
-    m_RemovedComponents: []
+      objectReference: {fileID: 1435713146}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopReloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1435713146}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1435713146}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StopReloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnAttack.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopReloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1435713146}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StopReloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331722934789654, guid: 4c8e48db932cb41cc91b032d09691504,
+        type: 2}
+      propertyPath: OnMisfire.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114423154106522978, guid: 4c8e48db932cb41cc91b032d09691504, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4c8e48db932cb41cc91b032d09691504, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &377678648
@@ -18223,6 +18324,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd30146bd71bd46bd9ddb95e114bdd0b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1435713135 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114990049076195488, guid: 4c8e48db932cb41cc91b032d09691504,
+    type: 2}
+  m_PrefabInternal: {fileID: 306799989}
+  m_Script: {fileID: 11500000, guid: c5c575964b9de48ddb8a3346380ceda3, type: 3}
+--- !u!114 &1435713146 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114181585459540604, guid: 4c8e48db932cb41cc91b032d09691504,
+    type: 2}
+  m_PrefabInternal: {fileID: 306799989}
+  m_Script: {fileID: 11500000, guid: a2189abdeaed84c2bb22240adfcb0824, type: 3}
 --- !u!1001 &1459247967
 Prefab:
   m_ObjectHideFlags: 0
@@ -18266,6 +18379,11 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956842131184688, guid: 0c783212b6c8dbf43baaf2278f8890b7,
+        type: 2}
+      propertyPath: ReloadPerIteration
+      value: 750
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c783212b6c8dbf43baaf2278f8890b7, type: 2}
@@ -35716,8 +35834,7 @@ Prefab:
         type: 2}
       propertyPath: AttackTypes.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 9648bd29eae1049ab9427bc516e8b9ac,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c94547c875f90e947afe6678c6faea2e, type: 2}
   m_IsPrefabParent: 0

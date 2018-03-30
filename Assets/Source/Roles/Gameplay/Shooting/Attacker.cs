@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,15 +18,24 @@ public class Attacker : MonoBehaviour {
     private Aimer aimer;
 
     private Coroutine shootingProcess = null;
+
+    [SerializeField]
+    [ReadOnly]
     private bool isShooting = false;
 
-    void Start () {
+    private AudioSource audioSource;
+
+    private GameInputManager inputManager;
+
+    private void Start () {
+        audioSource = gameObject.AddComponent<AudioSource> ();
         equipper = GetComponent<Equipper> ();
         aimer = GetComponent<Aimer> ();
+        inputManager = GameContainer.InputManager ();
     }
 
     void Update () {
-        if (GameContainer.InputManager ().GetKey (ActionCode.Attack)) {
+        if (inputManager.GetKey (ActionCode.Attack)) {
             if (!isShooting) {
                 shootingProcess = startShooting ();
             }
@@ -36,10 +46,17 @@ public class Attacker : MonoBehaviour {
 
     private Coroutine startShooting () {
         Weapon weapon = equipper.GetActiveWeapon ();
-        Ammo ammo = equipper.GetActiveAmmo ();
+        Ammo ammo = weapon.CurrentAmmoType;
         if (ammo) {
             isShooting = true;
             return StartCoroutine (weapon.GetAttackType ().Fire (weapon, ammo, delegate {
+
+                int ammoCountForShot = weapon.Buckshot ? 1 : weapon.ProjectileCountPerShot;
+                if (ammoCountForShot > weapon.CurrentAmmoCount) {
+                    OnMisfire.Invoke (weapon);
+                    playSound (weapon.MisfireSound);
+                    return;
+                }
                 GameObject prefab = ammo.Projectile;
                 for (int i = 0; i < weapon.ProjectileCountPerShot; i++) {
                     GameObject projectile = GameContainer.ObjectPooler ().Spawn (prefab, BulletSpawn.position, BulletSpawn.rotation);
@@ -49,6 +66,8 @@ public class Attacker : MonoBehaviour {
                     }
                     projectile.GetComponent<Rigidbody2D> ().velocity = aimer.GetAimVector () * weapon.ProjectileInitVelocity;
                 }
+                weapon.CurrentAmmoCount -= ammoCountForShot;
+                playSound (weapon.AttackSound);
                 OnAttack.Invoke (weapon);
             }));
         }
@@ -58,5 +77,12 @@ public class Attacker : MonoBehaviour {
     private void stopShooting (Coroutine shootingProcess) {
         isShooting = false;
         StopCoroutine (shootingProcess);
+    }
+
+    private void playSound (AudioClip clip) {
+        if (!clip) {
+            return;
+        }
+        AudioSource.PlayClipAtPoint (clip, transform.position);
     }
 }

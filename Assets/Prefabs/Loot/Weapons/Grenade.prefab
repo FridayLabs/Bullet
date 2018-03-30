@@ -90,29 +90,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959711b7f8c714e0aa237fc20ed2d250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShouldBeStoredInTypedSlots: 0
-  StackCount: 1
+  BagType: 0
   MaxStackCount: 51
   FriendlyName: Grenade
   UISprite: {fileID: 21300068, guid: a35f7c34b3385ae49a4827c172f31ed3, type: 3}
   Crosshair: {fileID: 0}
   DefaultOverviewRange: 6
   AimOverviewRange: 7
-  MaximumDispersion: 10
-  DispersionPerShoot: 1
-  AimDispersionPerShoot: 1
-  DispersionOnMove: 1
-  DispersionOnSeat: 1
-  DispersionRestoreSpeed: 1
-  DispersionRestoreDelay: 1
-  ReloadTimeMs: 25
-  AttackCooldownMs: 500
+  DefaultSpread: 0
+  MaximumSpread: 10
+  SpreadPerShot: 1
+  AimSpreadPerShot: 1
+  SpreadOnMovePerShot: 1
+  SpreadOnSeatPerShot: 1
+  SpreadRestoreSpeed: 1
+  SpreadRestoreDelay: 1
+  AttackSound: {fileID: 0}
+  MisfireSound: {fileID: 0}
   ProjectileInitVelocity: 25
   ProjectileRange: 6
-  ProjectileCountPerShoot: 1
+  Buckshot: 0
+  ProjectileCountPerShot: 1
+  ProjectileCountPerBurst: 1
   DamagePerProjectile: 20
+  AttackRate: 600
   MagazineCount: 1
+  CurrentAmmoType: {fileID: 0}
+  CurrentAmmoCount: 0
   MeleeAttackRadius: 1
+  AttackTypes:
+  - {fileID: 11400000, guid: d3b04106e23e44ffc98590a9e564df01, type: 2}
+  ReloadingStartSound: {fileID: 0}
+  ReloadingSound: {fileID: 0}
+  ReloadingFinishSound: {fileID: 0}
+  ReloadType: {fileID: 11400000, guid: cf32c093dc732481bac98cab72719b7a, type: 2}
+  ReloadPerIteration: 250
 --- !u!114 &114500337584262462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,8 +137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoPickup: 0
-  PickupSound: {fileID: 8300000, guid: f9637412b2ab54994a4c6e041500487b, type: 3}
-  DropSound: {fileID: 8300000, guid: c138106fe40bf40acab58460d22bfd87, type: 3}
+  StackCount: 1
+  PickupSound: {fileID: 8300000, guid: e9cdd5712d796460e9981f6eabff3cbf, type: 3}
+  DropSound: {fileID: 8300000, guid: 175c2780b314a4b03a1b9461e674bca1, type: 3}
   OnHighlight:
     m_PersistentCalls:
       m_Calls:

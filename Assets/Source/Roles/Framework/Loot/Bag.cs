@@ -79,6 +79,16 @@ public class Bag {
         return !isSlotEmpty (activeSlotIdx) ? slots[activeSlotIdx].Equipment : null;
     }
 
+    public int GetActiveEquipmentCount () {
+        return !isSlotEmpty (activeSlotIdx) ? slots[activeSlotIdx].Count : 0;
+    }
+
+    public void SetActiveEquipmentCount (int count) {
+        if (!isSlotEmpty (activeSlotIdx)) {
+            slots[activeSlotIdx].Count = count;
+        }
+    }
+
     private bool isSlotEmpty (int slotIdx) {
         return slots[slotIdx] == null || slots[slotIdx].IsEmpty ();
     }
