@@ -18,4 +18,16 @@ public class ReloadType : ScriptableObject {
         }
         finish ();
     }
+
+    public IEnumerator Unload (Weapon weapon, Action start, Func<int, bool> unload, Action finish) {
+        float reloadCD = weapon.UnloadPerIteration / 1000;
+        int count = weapon.CurrentAmmoCount;
+        start ();
+        yield return new WaitForSeconds (reloadCD);
+        for (int i = 0; i < (Batch ? 1 : count); i++) {
+            unload ((Batch ? count : 1));
+            yield return new WaitForSeconds (reloadCD);
+        }
+        finish ();
+    }
 }

@@ -74,12 +74,12 @@ public class Equipper : MonoBehaviour {
         return findBagByType (BagType.Ammo).GetActiveEquipment () as Ammo;
     }
 
-    public int GetActiveAmmoCount () {
-        return findBagByType (BagType.Ammo).GetActiveEquipmentCount ();
+    public int GetAmmoCount (Ammo ammo) {
+        return findBagByType (BagType.Ammo).GetEquipmentCount (ammo as Equipment);
     }
 
-    public void SetActiveAmmoCount (int count) {
-        findBagByType (BagType.Ammo).SetActiveEquipmentCount (count);
+    public void SetAmmoCount (Ammo ammo, int count) {
+        findBagByType (BagType.Ammo).SetEquipmentCount (ammo as Equipment, count);
     }
 
     public bool CanCarryMoreOf (Equipment equipment) {

@@ -79,13 +79,15 @@ public class Bag {
         return !isSlotEmpty (activeSlotIdx) ? slots[activeSlotIdx].Equipment : null;
     }
 
-    public int GetActiveEquipmentCount () {
-        return !isSlotEmpty (activeSlotIdx) ? slots[activeSlotIdx].Count : 0;
+    public int GetEquipmentCount (Equipment equipment) {
+        int slotIdx = findEquipSlot (equipment, -1);
+        return (slotIdx != -1) ? slots[slotIdx].Count : 0;
     }
 
-    public void SetActiveEquipmentCount (int count) {
-        if (!isSlotEmpty (activeSlotIdx)) {
-            slots[activeSlotIdx].Count = count;
+    public void SetEquipmentCount (Equipment equipment, int count) {
+        int slotIdx = findEquipSlot (equipment, -1);
+        if (slotIdx != -1) {
+            slots[slotIdx].Count = count;
         }
     }
 

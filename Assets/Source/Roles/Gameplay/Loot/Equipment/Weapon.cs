@@ -124,7 +124,20 @@ public class Weapon : Equipment {
 
     [BoxGroup ("Reloading")]
     [Range (0, 5000)]
-    public float ReloadPerIteration = 250f;
+    public float ReloadPerIteration = 600f;
+
+    [BoxGroup ("Reloading")]
+    public AudioClip UnloadingStartSound;
+
+    [BoxGroup ("Reloading")]
+    public AudioClip UnloadingSound;
+
+    [BoxGroup ("Reloading")]
+    public AudioClip UnloadingFinishSound;
+
+    [BoxGroup ("Reloading")]
+    [Range (0, 5000)]
+    public float UnloadPerIteration = 500f;
 
     public AttackType GetAttackType () {
         if (currentAttackTypeIdx > AttackTypes.Count - 1) {

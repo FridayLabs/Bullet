@@ -17,7 +17,8 @@ public class ActionCode {
     public static ActionCode Drop = new ActionCode () { Name = "Drop", KeyCode = KeyCode.G };
 
     public static ActionCode Attack = new ActionCode () { Name = "Attack", KeyCode = KeyCode.Mouse0 };
-    public static ActionCode Reload = new ActionCode () { Name = "Reload", KeyCode = KeyCode.R };
+    public static ActionCode Reload = new ActionCode () { Name = "Reload weapon", KeyCode = KeyCode.R };
+    public static ActionCode Unload = new ActionCode () { Name = "Unload weapon", KeyCode = KeyCode.U };
     public static ActionCode Aim = new ActionCode () { Name = "Aim", KeyCode = KeyCode.Mouse1 };
 
     public static ActionCode ActivateNextAmmoSlot = new ActionCode () { Name = "Activate next ammo slot", KeyCode = KeyCode.Q };
