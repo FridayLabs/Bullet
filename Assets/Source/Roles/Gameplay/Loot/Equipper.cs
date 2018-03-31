@@ -19,6 +19,7 @@ public class Equipper : MonoBehaviour {
 
     public EquipEvent OnEquip, OnDrop;
     public ActiveSlotEvent OnChangeActiveSlot;
+    public UnityEvent OnChangeWeapon, OnChangeAmmo;
 
     private Picker picker;
 
@@ -86,16 +87,31 @@ public class Equipper : MonoBehaviour {
     }
 
     public void ProcessEquipEvents (Bag bag, int slotIdx, Equipment equipment, int count) {
+        if (bag.BagType == BagType.Default) {
+            OnChangeWeapon.Invoke ();
+        }
         picker.Pick (equipment.GetComponent<Pickable> (), count);
         OnEquip.Invoke (slotIdx, equipment);
     }
 
     public void ProcessDropEvents (Bag bag, int slotIdx, Equipment equipment, int count) {
+        if (bag.BagType == BagType.Default) {
+            OnChangeWeapon.Invoke ();
+        }
+        if (bag.BagType == BagType.Ammo) {
+            OnChangeAmmo.Invoke ();
+        }
         OnDrop.Invoke (slotIdx, equipment);
         picker.Drop (equipment.GetComponent<Pickable> (), count);
     }
 
     public void ProcessChangeActiveSlotEvents (Bag bag, int slotIdx) {
+        if (bag.BagType == BagType.Default) {
+            OnChangeWeapon.Invoke ();
+        }
+        if (bag.BagType == BagType.Ammo) {
+            OnChangeAmmo.Invoke ();
+        }
         OnChangeActiveSlot.Invoke (bag, slotIdx);
     }
 }

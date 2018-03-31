@@ -20,9 +20,12 @@ public class Reloader : MonoBehaviour {
 
     private Equipper equipper;
 
+    private AudioSource reloadingAudioSource;
+
     private void Start () {
         inputManager = GameContainer.InputManager ();
         equipper = GetComponent<Equipper> ();
+        reloadingAudioSource = gameObject.AddComponent<AudioSource> ();
     }
 
     private void Update () {
@@ -76,9 +79,8 @@ public class Reloader : MonoBehaviour {
     }
 
     private void playSound (AudioClip clip) {
-        if (!clip) {
-            return;
+        if (clip) {
+            reloadingAudioSource.PlayOneShot (clip);
         }
-        AudioSource.PlayClipAtPoint (clip, transform.position);
     }
 }

@@ -25,10 +25,13 @@ public class Attacker : MonoBehaviour {
 
     private GameInputManager inputManager;
 
+    private AudioSource attackAudioSource;
+
     private void Start () {
         equipper = GetComponent<Equipper> ();
         aimer = GetComponent<Aimer> ();
         inputManager = GameContainer.InputManager ();
+        attackAudioSource = gameObject.AddComponent<AudioSource> ();
     }
 
     void Update () {
@@ -77,9 +80,8 @@ public class Attacker : MonoBehaviour {
     }
 
     private void playSound (AudioClip clip) {
-        if (!clip) {
-            return;
+        if (clip) {
+            attackAudioSource.PlayOneShot (clip);
         }
-        AudioSource.PlayClipAtPoint (clip, transform.position);
     }
 }

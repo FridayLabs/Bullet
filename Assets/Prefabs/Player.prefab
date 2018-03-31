@@ -32,7 +32,6 @@ GameObject:
   - component: {fileID: 114044561108567620}
   - component: {fileID: 114990049076195488}
   - component: {fileID: 114331722934789654}
-  - component: {fileID: 114423154106522978}
   - component: {fileID: 114181585459540604}
   m_Layer: 0
   m_Name: Player
@@ -433,17 +432,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114181585459540604}
-        m_MethodName: StopReloading
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: Equipper+EquipEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnDrop:
@@ -462,17 +450,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 114990049076195488}
         m_MethodName: UpdateCrosshair
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114181585459540604}
-        m_MethodName: StopReloading
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -532,6 +509,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: Equipper+ActiveSlotEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnChangeWeapon:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 114181585459540604}
         m_MethodName: StopReloading
         m_Mode: 1
@@ -543,8 +525,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Equipper+ActiveSlotEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnChangeAmmo:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114181585459540604}
+        m_MethodName: StopReloading
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114084761483250830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -599,17 +597,6 @@ MonoBehaviour:
   OnAttack:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114423154106522978}
-        m_MethodName: PlayAttackSound
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 114990049076195488}
         m_MethodName: UpdateSpread
         m_Mode: 0
@@ -637,17 +624,6 @@ MonoBehaviour:
   OnMisfire:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114423154106522978}
-        m_MethodName: PlayMisfireSound
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 114181585459540604}
         m_MethodName: StopReloading
         m_Mode: 1
@@ -662,18 +638,6 @@ MonoBehaviour:
     m_TypeName: Attacker+AttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   isShooting: 0
---- !u!114 &114423154106522978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1009404441634566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a83a76c5d979843958634865138eadcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pitch: {x: 1.3925067, y: 1.6966994}
 --- !u!114 &114462758743928576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,7 +701,9 @@ MonoBehaviour:
   CurrentAmmoCount: 0
   MeleeAttackRadius: 1
   AttackTypes: []
+  ReloadingStartSound: {fileID: 0}
   ReloadingSound: {fileID: 0}
+  ReloadingFinishSound: {fileID: 0}
   ReloadType: {fileID: 0}
   ReloadPerIteration: 250
 --- !u!114 &114686450392632880
