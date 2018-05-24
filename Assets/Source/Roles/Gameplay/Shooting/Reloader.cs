@@ -50,7 +50,6 @@ public class Reloader : MonoBehaviour {
                 startReloading (weapon, equipper.GetActiveAmmo ());
             }
         }
-        Debug.Log (canOperate);
         if (canOperate && inputManager.GetKeyDown (ActionCode.Unload)) {
             startUnloading (weapon);
         }

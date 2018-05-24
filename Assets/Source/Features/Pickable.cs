@@ -48,4 +48,8 @@ public class Pickable : MonoBehaviour {
     public Equipment GetEquipment () {
         return equipment;
     }
+
+    public bool CanBePicked () {
+        return isActiveAndEnabled;
+    }
 }

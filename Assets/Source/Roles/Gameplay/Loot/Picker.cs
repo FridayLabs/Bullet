@@ -40,12 +40,18 @@ public class Picker : MonoBehaviour {
 
     public void Pick (Pickable pickable, int count) {
         pickable.Pick (count);
+        if (!pickable.CanBePicked ()) {
+            currentPickables.Remove (pickable.gameObject);
+        }
         audioSource.PlayOneShot (pickable.PickupSound);
         updateHighlight (true);
     }
 
     public void Drop (Pickable pickable, int count) {
         pickable.Drop (DropSpawn, count);
+        if (pickable.CanBePicked ()) {
+            currentPickables.Add (pickable.gameObject);
+        }
         audioSource.PlayOneShot (pickable.DropSound);
         updateHighlight (true);
     }
