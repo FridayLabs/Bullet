@@ -7,14 +7,14 @@ public class PickupDisplay : MonoBehaviour {
     public Text Text;
     private string textFormat;
 
+    public Picker picker;
+
     private void Start () {
         gameObject.SetActive (false);
         textFormat = Text.text;
+        picker.OnPickupHighlightChanged.AddListener (UpdateHighlight);
     }
 
-    /**
-     * Should be triggered by Player's Picker
-     */
     public void UpdateHighlight (Pickable pickable) {
         if (pickable) {
             gameObject.SetActive (true);

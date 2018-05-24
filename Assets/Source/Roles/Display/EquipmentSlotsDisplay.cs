@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class EquipmentSlotsDisplay : MonoBehaviour {
 
+    public Equipper equipper;
+
     [SerializeField] private EquipmentSlotDisplay[] slots;
 
     private int currentActiveSlot = 0;
 
     private void Start () {
+        equipper.OnEquip.AddListener (Equip);
+        equipper.OnDrop.AddListener (Drop);
+        equipper.OnChangeActiveSlot.AddListener (ChangeActiveSlot);
+
         EquipmentSlotDisplay currentSlot = slots[currentActiveSlot];
         currentSlot.MarkActive (true);
     }

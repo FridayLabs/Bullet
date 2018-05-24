@@ -28,13 +28,6 @@ public class Aimer : MonoBehaviour {
     private float spread = 0f;
     private float lastSpreadChange = 0f;
 
-    public void UpdateCrosshair () {
-        Weapon weapon = equipper.GetActiveWeapon ();
-        if (weapon) {
-            Cursor.SetCursor (weapon.Crosshair, Vector2.zero, CursorMode.Auto);
-        }
-    }
-
     public void UpdateSpread (Weapon weapon) {
         float modifier = currentAimMode == AimMode.Default ? weapon.SpreadPerShot : weapon.AimSpreadPerShot;
         if (walker && walker.IsWalking ()) {
@@ -64,7 +57,6 @@ public class Aimer : MonoBehaviour {
         croucher = GetComponent<Croucher> ();
         changeAimMode (AimMode.Default, true);
         ResetSpread ();
-        UpdateCrosshair ();
     }
 
     private void Update () {
