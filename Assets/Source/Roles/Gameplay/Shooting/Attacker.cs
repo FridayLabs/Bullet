@@ -13,6 +13,7 @@ public class Attacker : MonoBehaviour {
     public class AttackEvent : UnityEvent<Weapon> { }
 
     public AttackEvent OnAttack, OnMisfire;
+    public UnityEvent OnChangeAttackType;
 
     private Equipper equipper;
     private Aimer aimer;
@@ -39,9 +40,17 @@ public class Attacker : MonoBehaviour {
             if (!isShooting) {
                 shootingProcess = startShooting ();
             }
+        } else if (inputManager.GetKeyDown (ActionCode.NextAttackType)) {
+            changeNextAttackType ();
         } else if (isShooting && shootingProcess != null) {
             stopShooting (shootingProcess);
         }
+    }
+
+    private void changeNextAttackType () {
+        Weapon weapon = equipper.GetActiveWeapon ();
+        weapon.NextAttackType ();
+        OnChangeAttackType.Invoke ();
     }
 
     private Coroutine startShooting () {

@@ -10,7 +10,7 @@ public class Picker : MonoBehaviour {
 
     public Transform DropSpawn;
 
-    public PickableEvent OnPickupHighlightChanged;
+    public PickableEvent OnPickupHighlightChanged, OnPickup, OnDrop;
 
     private readonly List<GameObject> currentPickables = new List<GameObject> ();
     private GameObject currentClosestPickup;
@@ -45,6 +45,7 @@ public class Picker : MonoBehaviour {
         }
         audioSource.PlayOneShot (pickable.PickupSound);
         updateHighlight (true);
+        OnPickup.Invoke (pickable);
     }
 
     public void Drop (Pickable pickable, int count) {
@@ -54,6 +55,7 @@ public class Picker : MonoBehaviour {
         }
         audioSource.PlayOneShot (pickable.DropSound);
         updateHighlight (true);
+        OnDrop.Invoke (pickable);
     }
 
     private void LateUpdate () {

@@ -45,8 +45,8 @@ public class Bag {
                 // stacking
                 int take = calculateEquipCount (count, slots[slotIdx].Count, equipment.MaxStackCount);
                 if (take > 0) {
-                    equipper.ProcessEquipEvents (this, slotIdx, equipment, take);
                     slots[slotIdx].Count += take;
+                    equipper.ProcessEquipEvents (this, slotIdx, equipment, take);
                 }
                 return;
             } else {
@@ -80,6 +80,9 @@ public class Bag {
     }
 
     public int GetEquipmentCount (Equipment equipment) {
+        if (equipment == null) {
+            return 0;
+        }
         int slotIdx = findEquipSlot (equipment, -1);
         return (slotIdx != -1) ? slots[slotIdx].Count : 0;
     }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Single
   m_EditorClassIdentifier: 
   DeveloperDescription: 
+  FriendlyName: Single-shot
   BurstedFire: 1
   DelayBetweenBurst: 3

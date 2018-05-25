@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu (fileName = "AttackType", menuName = "Weapon/AttackType")]
 public class AttackType : DataType {
 
+    public string FriendlyName;
+
     public bool BurstedFire = true;
 
     [ShowIf ("BurstedFire")]

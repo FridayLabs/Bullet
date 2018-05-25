@@ -21,6 +21,8 @@ public class ActionCode {
     public static ActionCode Unload = new ActionCode () { Name = "Unload weapon", KeyCode = KeyCode.U };
     public static ActionCode Aim = new ActionCode () { Name = "Aim", KeyCode = KeyCode.Mouse1 };
 
+    public static ActionCode NextAttackType = new ActionCode () { Name = "Next Attack type", KeyCode = KeyCode.V };
+
     public static ActionCode ActivateNextAmmoSlot = new ActionCode () { Name = "Activate next ammo slot", KeyCode = KeyCode.Q };
 
     public static ActionCode ActivateNextEquipmentSlot = new ActionCode () { Name = "Activate next equipment slot", KeyCode = KeyCode.Tab };

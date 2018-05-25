@@ -146,7 +146,26 @@ public class Weapon : Equipment {
         return AttackTypes[currentAttackTypeIdx];
     }
 
+    public void NextAttackType () {
+        currentAttackTypeIdx = (currentAttackTypeIdx + 1) % AttackTypes.Count;
+    }
+
+    public void SetAttackType (AttackType attackType) {
+        if (HasAttackType (attackType)) {
+            currentAttackTypeIdx = AttackTypes.FindIndex ((AttackType x) => x && x == attackType);
+        }
+        throw new Exception (this.FriendlyName + " has no AttackType with idx " + attackType.FriendlyName);
+    }
+
+    public bool HasAttackType (AttackType attackType) {
+        return AttackTypes.FindIndex ((AttackType x) => x && x == attackType) != -1;
+    }
+
     private bool hasBurstedAttack () {
-        return AttackTypes.FindIndex ((AttackType x) => x.BurstedFire == true) != -1;
+        if (AttackTypes.Count > 0) {
+            return AttackTypes.FindIndex ((AttackType x) => x && x.BurstedFire == true) != -1;
+        } else {
+            return false;
+        }
     }
 }

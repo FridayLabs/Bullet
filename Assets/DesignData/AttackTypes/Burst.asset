@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Burst
   m_EditorClassIdentifier: 
   DeveloperDescription: 
+  FriendlyName: Burst
   BurstedFire: 1
   DelayBetweenBurst: 0.5

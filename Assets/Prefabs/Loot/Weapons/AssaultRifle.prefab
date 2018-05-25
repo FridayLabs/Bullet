@@ -191,6 +191,10 @@ MonoBehaviour:
     type: 3}
   ReloadType: {fileID: 11400000, guid: cf32c093dc732481bac98cab72719b7a, type: 2}
   ReloadPerIteration: 600
+  UnloadingStartSound: {fileID: 0}
+  UnloadingSound: {fileID: 0}
+  UnloadingFinishSound: {fileID: 0}
+  UnloadPerIteration: 500
 --- !u!212 &212265812008190786
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -204,6 +208,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 0}
   m_StaticBatchInfo:

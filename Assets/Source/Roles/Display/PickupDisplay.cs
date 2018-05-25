@@ -8,6 +8,7 @@ public class PickupDisplay : MonoBehaviour {
     private string textFormat;
 
     public Picker picker;
+    public Equipper equipper;
 
     private void Start () {
         gameObject.SetActive (false);
@@ -16,7 +17,7 @@ public class PickupDisplay : MonoBehaviour {
     }
 
     public void UpdateHighlight (Pickable pickable) {
-        if (pickable) {
+        if (pickable && equipper.CanCarryMoreOf (pickable.GetEquipment ())) {
             gameObject.SetActive (true);
             Equipment equipment = pickable.GetEquipment ();
             Text.text = textFormat
