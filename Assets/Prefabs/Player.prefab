@@ -33,6 +33,8 @@ GameObject:
   - component: {fileID: 114990049076195488}
   - component: {fileID: 114331722934789654}
   - component: {fileID: 114181585459540604}
+  - component: {fileID: 114902195008927862}
+  - component: {fileID: 114478309406299518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -632,6 +634,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114478309406299518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009404441634566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009a9526439fa45e3b4b7d1d8e5cc69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114562273280939480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -667,6 +685,7 @@ MonoBehaviour:
   ProjectileCountPerBurst: 1
   DamagePerProjectile: 20
   AttackRate: 600
+  DelayBewteenAttacks: 600
   MagazineCount: 1
   CurrentAmmoType: {fileID: 0}
   CurrentAmmoCount: 0
@@ -764,6 +783,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitch: {x: 1, y: 2}
+--- !u!114 &114902195008927862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009404441634566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be06dac92337400c8148bb1fa3a9201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  maximumHp: 100
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114990049076195488
 MonoBehaviour:
   m_ObjectHideFlags: 1
