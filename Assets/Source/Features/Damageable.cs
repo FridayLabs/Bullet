@@ -14,7 +14,7 @@ public class Damageable : MonoBehaviour {
 
     private Diable diable;
 
-    [TestButton ("Take Damage", "testTakeDamage", isActiveInEditor = false)]
+    [TestButton ("Take 10 Damage", "testTakeDamage", isActiveInEditor = false)]
     public UnityEvent OnTakeDamage;
 
     private void testTakeDamage () {
