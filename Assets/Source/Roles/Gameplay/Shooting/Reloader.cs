@@ -73,7 +73,12 @@ public class Reloader : MonoBehaviour {
                 OnReloadStart.Invoke (weapon);
             },
             (int c) => {
-                equipper.SetAmmoCount (weapon.CurrentAmmoType, equipper.GetAmmoCount (weapon.CurrentAmmoType) - c);
+                int totalAmmoCount = equipper.GetAmmoCount (weapon.CurrentAmmoType);
+                if (c > totalAmmoCount) {
+                    c = totalAmmoCount;
+                }
+
+                equipper.SetAmmoCount (weapon.CurrentAmmoType, totalAmmoCount - c);
                 weapon.CurrentAmmoCount += c;
                 playSound (weapon.ReloadingSound);
                 OnReloadIteration.Invoke (weapon);

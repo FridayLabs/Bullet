@@ -88,6 +88,9 @@ public class Bag {
     }
 
     public void SetEquipmentCount (Equipment equipment, int count) {
+        if (count < 0) {
+            throw new Exception ("Equipment <" + equipment.GetType ().ToString () + "> count can't be < 0");
+        }
         int slotIdx = findEquipSlot (equipment, -1);
         if (slotIdx != -1) {
             slots[slotIdx].Count = count;
