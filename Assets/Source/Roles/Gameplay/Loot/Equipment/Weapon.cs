@@ -89,6 +89,9 @@ public class Weapon : Equipment {
     public int AttackRate = 600;
 
     [BoxGroup ("Atacking")]
+    public int DelayBewteenAttacks = 600;
+
+    [BoxGroup ("Atacking")]
     [MinValue (1)]
     public int MagazineCount = 7;
 

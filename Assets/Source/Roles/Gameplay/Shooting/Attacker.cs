@@ -19,6 +19,7 @@ public class Attacker : MonoBehaviour {
     private Aimer aimer;
 
     private Coroutine shootingProcess = null;
+    private float lastAttack = 0;
 
     [SerializeField]
     [ReadOnly]
@@ -37,7 +38,9 @@ public class Attacker : MonoBehaviour {
 
     void Update () {
         if (inputManager.GetKey (ActionCode.Attack)) {
-            if (!isShooting) {
+            Weapon weapon = equipper.GetActiveWeapon ();
+            float timeSinceLastAttack = Time.time - lastAttack;
+            if (!isShooting && (lastAttack == 0 || timeSinceLastAttack >= (weapon.DelayBewteenAttacks / 1000))) {
                 shootingProcess = startShooting ();
             }
         } else if (inputManager.GetKeyDown (ActionCode.NextAttackType)) {
@@ -86,6 +89,7 @@ public class Attacker : MonoBehaviour {
     private void stopShooting (Coroutine shootingProcess) {
         isShooting = false;
         StopCoroutine (shootingProcess);
+        lastAttack = Time.time;
     }
 
     private void playSound (AudioClip clip) {

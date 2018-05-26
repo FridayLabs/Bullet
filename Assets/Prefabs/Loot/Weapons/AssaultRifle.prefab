@@ -177,7 +177,8 @@ MonoBehaviour:
   ProjectileCountPerShot: 1
   ProjectileCountPerBurst: 3
   DamagePerProjectile: 20
-  AttackRate: 300
+  AttackRate: 600
+  DelayBewteenAttacks: 0
   MagazineCount: 30
   CurrentAmmoType: {fileID: 0}
   CurrentAmmoCount: 0
