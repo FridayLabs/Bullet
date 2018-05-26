@@ -41,7 +41,7 @@ public class Reloader : MonoBehaviour {
 
         bool canOperate = activeAmmo != null && weapon != null;
 
-        if (canOperate && inputManager.GetKeyDown (ActionCode.Reload)) {
+        if (weapon.ShouldReload && canOperate && inputManager.GetKeyDown (ActionCode.Reload)) {
             if (weapon.CurrentAmmoType != null && weapon.CurrentAmmoType != equipper.GetActiveAmmo ()) {
                 startUnloading (weapon, delegate {
                     startReloading (weapon, equipper.GetActiveAmmo ());
@@ -50,7 +50,7 @@ public class Reloader : MonoBehaviour {
                 startReloading (weapon, equipper.GetActiveAmmo ());
             }
         }
-        if (canOperate && inputManager.GetKeyDown (ActionCode.Unload)) {
+        if (weapon.ShouldReload && canOperate && inputManager.GetKeyDown (ActionCode.Unload)) {
             startUnloading (weapon);
         }
     }

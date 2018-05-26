@@ -129,6 +129,9 @@ public class Bag {
     public bool CanCarryMoreOf (Equipment equipment) {
         Pickable pickable = equipment.GetComponent<Pickable> ();
         int slotIdx = findEquipSlot (equipment, activeSlotIdx);
+        if (BagType != BagType.Ammo && !equipment.IsStackable ()) {
+            return true; // will be replaced
+        }
         return calculateEquipCount (pickable.StackCount, slots[slotIdx].Count, equipment.MaxStackCount) > 0;
     }
 

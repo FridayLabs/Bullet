@@ -179,6 +179,7 @@ MonoBehaviour:
   DamagePerProjectile: 20
   AttackRate: 600
   DelayBewteenAttacks: 0
+  HasInfinityAmmo: 0
   MagazineCount: 7
   CurrentAmmoType: {fileID: 0}
   CurrentAmmoCount: 0

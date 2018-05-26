@@ -686,12 +686,14 @@ MonoBehaviour:
   DamagePerProjectile: 20
   AttackRate: 600
   DelayBewteenAttacks: 600
+  HasInfinityAmmo: 1
   MagazineCount: 1
   CurrentAmmoType: {fileID: 0}
   CurrentAmmoCount: 0
   MeleeAttackRadius: 1
   AttackTypes:
   - {fileID: 11400000, guid: d3b04106e23e44ffc98590a9e564df01, type: 2}
+  ShouldReload: 0
   ReloadingStartSound: {fileID: 0}
   ReloadingSound: {fileID: 0}
   ReloadingFinishSound: {fileID: 0}

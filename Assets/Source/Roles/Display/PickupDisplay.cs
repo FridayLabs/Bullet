@@ -17,12 +17,16 @@ public class PickupDisplay : MonoBehaviour {
     }
 
     public void UpdateHighlight (Pickable pickable) {
-        if (pickable && equipper.CanCarryMoreOf (pickable.GetEquipment ())) {
-            gameObject.SetActive (true);
+        if (pickable) {
             Equipment equipment = pickable.GetEquipment ();
-            Text.text = textFormat
-                .Replace ("%key%", ActionCode.Pickup.KeyCode.ToString ())
-                .Replace ("%equipment name%", equipment.FriendlyName + (equipment.IsStackable () ? " (" + pickable.StackCount + ")" : ""));
+            gameObject.SetActive (true);
+            if (equipper.CanCarryMoreOf (equipment)) {
+                Text.text = textFormat
+                    .Replace ("%key%", ActionCode.Pickup.KeyCode.ToString ())
+                    .Replace ("%equipment name%", equipment.FriendlyName + (equipment.IsStackable () ? " (" + pickable.StackCount + ")" : ""));
+            } else {
+                Text.text = "You can't carry more " + equipment.FriendlyName;
+            }
         } else {
             gameObject.SetActive (false);
         }

@@ -31,8 +31,8 @@ public class MagazineDisplay : MonoBehaviour {
 
         string result = ammoMask;
 
-        result = result.Replace ("%1%", weapon.CurrentAmmoCount.ToString ());
-        result = result.Replace ("%2%", equipper.GetAmmoCount (equipper.GetActiveAmmo ()).ToString ());
+        result = result.Replace ("%1%", weapon.HasInfinityAmmo ? "-" : weapon.CurrentAmmoCount.ToString ());
+        result = result.Replace ("%2%", weapon.HasInfinityAmmo ? "-" : equipper.GetAmmoCount (equipper.GetActiveAmmo ()).ToString ());
 
         text.text = result;
     }

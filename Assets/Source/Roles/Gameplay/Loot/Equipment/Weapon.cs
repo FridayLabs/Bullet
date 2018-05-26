@@ -92,6 +92,10 @@ public class Weapon : Equipment {
     public int DelayBewteenAttacks = 600;
 
     [BoxGroup ("Atacking")]
+    public bool HasInfinityAmmo = false;
+
+    [BoxGroup ("Atacking")]
+    [HideIf ("HasInfinityAmmo")]
     [MinValue (1)]
     public int MagazineCount = 7;
 
@@ -114,31 +118,43 @@ public class Weapon : Equipment {
     private int currentAttackTypeIdx = 0;
 
     [BoxGroup ("Reloading")]
+    public bool ShouldReload = true;
+
+    [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public AudioClip ReloadingStartSound;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public AudioClip ReloadingSound;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public AudioClip ReloadingFinishSound;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public ReloadType ReloadType;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     [Range (0, 5000)]
     public float ReloadPerIteration = 600f;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public AudioClip UnloadingStartSound;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public AudioClip UnloadingSound;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     public AudioClip UnloadingFinishSound;
 
     [BoxGroup ("Reloading")]
+    [ShowIf ("ShouldReload")]
     [Range (0, 5000)]
     public float UnloadPerIteration = 500f;
 
