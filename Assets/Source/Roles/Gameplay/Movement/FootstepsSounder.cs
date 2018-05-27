@@ -14,7 +14,7 @@ public class FootstepsSounder : MonoBehaviour {
     }
 
     public void OnFootstep () {
-        RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.zero);
+        RaycastHit2D hit = Physics2D.Raycast (transform.position, new Vector3 (0, 0, -1));
         if (hit && hit.collider) {
             ConsistingOfSubstance consistingOfSubstance = hit.collider.GetComponent<ConsistingOfSubstance> ();
             if (consistingOfSubstance) {
